@@ -36,13 +36,6 @@ public class Division extends OpBinaire {
 		return this.left.calculer() / this.right.calculer();
 	}
 	
-	public static void main(String[] args) {
-		ConstanteQ cst1 = new ConstanteQ(1, 2);
-		ConstanteQ cst2 = new ConstanteQ(1, 3);
-		ConstanteQ cst = new ConstanteQ(2, 3);
-		ExpressionArithmetique ex = new Division(cst2, cst1);
-		System.out.println(ex.simplifier().equals(cst));
-	}
 	
 
 }
