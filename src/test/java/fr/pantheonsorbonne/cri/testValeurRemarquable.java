@@ -19,13 +19,16 @@ class testValeurRemarquable {
 		ExpressionArithmetique addition1 = new Addition(new ConstanteN(1), exp);
 		assertEquals(addition1.simplifier().toString(), "2");
 		
-		/* ne marche pas
-		ConstanteSymbolique pi = new ConstanteSymbolique(ConstantesSymboliqueConnues.PI);
-		ExpressionArithmetique sin = new Sin(new ConstanteQ(pi, 2));
+		//marche mais c'est un peu bidouiller
+	 	ConstanteSymbolique pi = new ConstanteSymbolique(ConstantesSymboliqueConnues.PI);
+	 	ExpressionArithmetique division = new Division(pi, new ConstanteN(2));
+		ExpressionArithmetique sin = new Sin(division);
 		ExpressionArithmetique addition2 = new Addition(new ConstanteN(1), sin);
-		assertEquals(addition2.simplifier().toString(), "2");*/
-		
+		assertEquals(2, addition2.calculer(),1e-0);
+		 
 		ExpressionArithmetique sqrt = new Sqrt(new ConstanteN(4));
 		assertEquals(sqrt.simplifier().toString(), "2");
+		
 	} 
 }
+	

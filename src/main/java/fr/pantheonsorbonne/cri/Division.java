@@ -31,6 +31,7 @@ public class Division extends OpBinaire {
 	protected ExpressionArithmetique simplifier(ConstanteQ valLeft, ConstanteQ valRight) {
 		return new ConstanteQ(valLeft.getNum()*valRight.getDenum(), valLeft.getDenum()*valRight.getNum()).simplifier();
 	}
+	
 	@Override
 	public double calculer() {
 		return this.left.calculer() / this.right.calculer();

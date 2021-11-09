@@ -23,7 +23,7 @@ class testAffecterVariableSymbolique {
 		assertEquals(ex2.toString(), "((4/5)-x)");
 		
 		x.setValeur(ex1);
-		assertEquals(ex2.toString(),"((4/5)-(3+a))");
+		assertEquals(ex2.toString(),"((4/5)-(3+a))"); 
 		assertEquals(ex2.simplifier().toString(), "((4/5)-(3+a))");
 		
 		/* ne marche pas

@@ -14,19 +14,22 @@ class testCalcul {
 		assertEquals(cal.toString(), "(1+(3/4))");
 		assertEquals(1.7500, cal.calculer(),1e-4);
 		
-		ExpressionArithmetique cal1 = new Multiplication(new ConstanteN(1), new ConstanteQ(6, 9));
-		assertEquals(cal1.toString(), "(1*(6/9))");
-		assertEquals(0.6666, cal1.calculer(),1e-4);
-		
-		
 		ConstanteSymbolique pi = new ConstanteSymbolique(ConstantesSymboliqueConnues.PI);
 		ExpressionArithmetique cal2 = new Addition(new ConstanteN(1), pi);
 		assertEquals(cal2.toString(), "(1+π)");
 		assertEquals(4.1415, cal2.calculer(),1e-4);
 		
+		ExpressionArithmetique cal1 = new Multiplication(new ConstanteN(1), new ConstanteQ(6, 9));
+		assertEquals(cal1.toString(), "(1*(6/9))");
+		assertEquals(0.6666, cal1.calculer(),1e-4);
+		
 		ExpressionArithmetique cal3 = new Division(new ConstanteN(1), new ConstanteN(6));
 		assertEquals(cal3.toString(), "(1/6)");
 		assertEquals(0.1666, cal3.calculer(),1e-4);
+		
+		ExpressionArithmetique cal4 = new Soustraction(new ConstanteN(1), new ConstanteQ(1, 3));
+		assertEquals(cal4.toString(), "(1-(1/3))");
+		assertEquals(0.6666, cal4.calculer(),1e-4);
 		
     	ExpressionArithmetique sinus = new Sin(new ConstanteN(90)); 
     	assertEquals(sinus.toString(), "(sin(90))");
@@ -52,7 +55,6 @@ class testCalcul {
 		assertEquals(sqrt.toString(), "(sqrt(3))");
 		assertEquals(1.7320, sqrt.calculer(),1e-4);
 		
-
 	}
 
 }
