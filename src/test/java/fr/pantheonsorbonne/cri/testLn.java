@@ -14,16 +14,16 @@ class testLn {
 	void test() {
 		
 		ExpressionArithmetique lnUn = new Ln(new ConstanteN(1));
-		assertEquals(lnUn.toString(), "(ln(1))");
-		assertEquals(lnUn.simplifier().toString(), "0");
+		assertEquals("(ln(1))",lnUn.toString());
+		assertEquals("0",lnUn.simplifier().toString());
 		
 		ExpressionArithmetique lnE = new Ln(ConstanteSymbolique.E);
-		assertEquals(lnE.toString(), "(ln(e))");
-		assertEquals(lnE.simplifier().toString(), "1");
+		assertEquals("(ln(e))", lnE.toString());
+		assertEquals("1", lnE.simplifier().toString());
 		
 		ExpressionArithmetique lnO = new Ln(new ConstanteQ(2, 4));
-		assertEquals(lnO.toString(), "(ln((2/4)))");
-		assertEquals(lnO.simplifier().toString(), "(ln((1/2)))");
+		assertEquals("(ln((2/4)))",lnO.toString());
+		assertEquals("(ln((1/2)))",lnO.simplifier().toString());
 	}
 
 }

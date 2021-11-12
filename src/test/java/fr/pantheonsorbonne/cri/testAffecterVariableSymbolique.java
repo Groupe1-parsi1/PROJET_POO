@@ -1,36 +1,48 @@
 package fr.pantheonsorbonne.cri;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 class testAffecterVariableSymbolique {
 
 	@Test
-	void test() {
+	void test1() {
 		ConstanteN cst1 = new ConstanteN(3);
-		VariableInconnue a = new VariableInconnue('a');
-
-		ExpressionArithmetique ex1 = new Addition(cst1, a);
-		
-		ConstanteQ cst2 = new ConstanteQ(4, 5);
+		ConstanteN cst2 = new ConstanteN(7);
 		VariableInconnue x = new VariableInconnue('x');
 		
-		ConstanteQ cst3 = new ConstanteQ(1, 5);
+		ExpressionArithmetique ex = new Addition(cst1, x);
 		
-		ExpressionArithmetique ex2 = new Soustraction(cst2, x);
-		
-		assertEquals(ex2.toString(), "((4/5)-x)");
-		
-		x.setValeur(ex1);
-		assertEquals(ex2.toString(),"((4/5)-(3+a))"); 
-		assertEquals(ex2.simplifier().toString(), "((4/5)-(3+a))");
-		
-		/* ne marche pas
-		x.setValeur(cst3);
-		assertEquals(ex2.toString(),"((4/5)-(1/5))");
-		assertEquals(ex2.simplifier().toString(),"(3/5)");*/
-			
+		x.setValeur(cst2);
+		assertEquals("10", ex.simplifier().toString());
 	}
+	
+	@Test
+	void test1a() {
+		ConstanteQ cst1 = new ConstanteQ(5, 9);
+		ConstanteQ cst2 = new ConstanteQ(2, 9);
+		VariableInconnue a = new VariableInconnue('a');
+		VariableInconnue x = new VariableInconnue('x');
+		
+		ExpressionArithmetique ex = new Soustraction(cst1, a);
+		ExpressionArithmetique ex1 = new Addition(x, ex);
+		
+		x.setValeur(cst2);
+		assertEquals("((2/9)+((5/9)-a))",ex1.simplifier().toString());
+	}
+	
+	@Test
+	void test2() {
+		ConstanteN cst1 = new ConstanteN(5);
+	
+		VariableInconnue x = new VariableInconnue('x');
+		
+		ExpressionArithmetique ex = new Addition(cst1, x);
+		
+		x.setValeur(null);
+		assertEquals("(5+x)", ex.simplifier().toString());
+	}
+		
 
 }

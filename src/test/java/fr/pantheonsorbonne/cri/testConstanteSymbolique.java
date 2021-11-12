@@ -9,10 +9,11 @@ public class testConstanteSymbolique {
 
     @Test
     public void test() {
-        assertEquals(ConstanteSymbolique.ConstantesSymboliqueConnues.PI.getStrPresentation(), "π");
-        assertEquals(ConstanteSymbolique.ConstantesSymboliqueConnues.EXPONENTIELLE.getStrPresentation(), "e");
-        assertEquals(new ConstanteSymbolique(ConstanteSymbolique.ConstantesSymboliqueConnues.PI).simplifier().toString(), "π");
-        assertEquals(new ConstanteSymbolique(ConstanteSymbolique.ConstantesSymboliqueConnues.EXPONENTIELLE).simplifier().toString(), "e");
+        assertEquals("π",ConstanteSymbolique.ConstantesSymboliqueConnues.PI.getStrPresentation());
+        assertEquals( "e",ConstanteSymbolique.ConstantesSymboliqueConnues.EXPONENTIELLE.getStrPresentation());
+        assertEquals("π",new ConstanteSymbolique(ConstanteSymbolique.ConstantesSymboliqueConnues.PI).simplifier().toString());
+        assertEquals("e",new ConstanteSymbolique(ConstanteSymbolique.ConstantesSymboliqueConnues.EXPONENTIELLE).simplifier().toString());
     }
 
 }
+ 

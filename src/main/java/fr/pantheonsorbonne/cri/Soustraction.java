@@ -30,6 +30,7 @@ public class Soustraction extends OpBinaire {
     	return new ConstanteQ(num, denum).simplifier();
     }
     
+		
     @Override
    	public double calculer() {
    		return this.left.calculer() - this.right.calculer();

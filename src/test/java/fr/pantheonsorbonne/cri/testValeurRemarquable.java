@@ -19,7 +19,6 @@ class testValeurRemarquable {
 		ExpressionArithmetique addition1 = new Addition(new ConstanteN(1), exp);
 		assertEquals(addition1.simplifier().toString(), "2");
 		
-		//marche mais c'est un peu bidouiller
 	 	ConstanteSymbolique pi = new ConstanteSymbolique(ConstantesSymboliqueConnues.PI);
 	 	ExpressionArithmetique division = new Division(pi, new ConstanteN(2));
 		ExpressionArithmetique sin = new Sin(division);

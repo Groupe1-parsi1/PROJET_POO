@@ -25,6 +25,32 @@ public class Cos extends OpUnaire {
             else if(value.value == 120 || value.value == -120)
             	return new ConstanteQ(-1, 2);
         }
+        if(val instanceof Division) {
+        	Division div = (Division) val;
+        	if(div.left instanceof ConstanteSymbolique) {
+        		ConstanteSymbolique piLeft = (ConstanteSymbolique)div.left;
+        		if(div.right instanceof ConstanteN) {
+        			ConstanteN cstRight = (ConstanteN) div.right;
+        			if(piLeft.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI && cstRight.value == 2)
+        				return new ConstanteN(0);
+        			else if(piLeft.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI && cstRight.value == -2)
+        				return new ConstanteN(0);
+        			else if(piLeft.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI && cstRight.value == 6)
+        				return new Division(new Sqrt(new ConstanteN(3)),new ConstanteN(2));
+        			else if(piLeft.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI && cstRight.value == -6)
+        				return new Division(new Sqrt(new ConstanteN(3)),new ConstanteN(2));
+        			else if(piLeft.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI && cstRight.value == 3)
+        				return new ConstanteQ(1, 2);
+        			else if(piLeft.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI && cstRight.value == 4)
+        				return new Division(new Sqrt(new ConstanteN(2)),new ConstanteN(2));
+        			else if(piLeft.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI && cstRight.value == -3)
+        				return new ConstanteQ(1, 2);
+        			else if(piLeft.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI && cstRight.value == -4)
+        				return new Division(new Sqrt(new ConstanteN(2)),new ConstanteN(2)); 
+        				
+        		}
+        	}
+        }
         return new Cos(val);
     }
     

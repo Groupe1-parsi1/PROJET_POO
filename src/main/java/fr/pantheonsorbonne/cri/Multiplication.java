@@ -24,7 +24,6 @@ public class Multiplication extends OpBinaire {
         return new ConstanteQ(valLeft.value * valRight.getNum(), valRight.getDenum());
     }
     
-    
     @Override
    	public double calculer() {
    		return this.left.calculer() * this.right.calculer();
