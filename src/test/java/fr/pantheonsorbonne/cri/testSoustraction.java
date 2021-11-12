@@ -53,6 +53,12 @@ class testSoustraction {
 		 ExpressionArithmetique s4 = new Soustraction(sous1, s3);
 		 assertEquals(s4.toString(), "(10-((1/2)-x))");
 		 assertEquals(s4.simplifier().toString(), "(10-((1/2)-x))");
+		 
+		 ConstanteQ sou1 = new ConstanteQ(4, 7);
+		 ConstanteQ sou2 = new ConstanteQ(2, 7);
+		 ExpressionArithmetique sou3 = new Soustraction(sou1, sou2);
+		 assertEquals(sou3.simplifier().toString(), "(2/7)");
+		 
 
     	
     	

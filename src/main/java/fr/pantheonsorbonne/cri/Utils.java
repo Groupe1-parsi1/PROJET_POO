@@ -9,4 +9,6 @@ public abstract class Utils {
     public static ConstanteN toN(ExpressionArithmetique ea) {
         return (ConstanteN) ea;
     }
+    
+    
 }

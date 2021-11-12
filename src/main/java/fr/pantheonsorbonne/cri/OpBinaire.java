@@ -39,7 +39,6 @@ public abstract class OpBinaire implements ExpressionArithmetique {
 		return simplifier(toN(this.right), toQ(this.left));
 	}
 	
-
 	abstract protected ExpressionArithmetique simplifier(ConstanteN valLeft, ConstanteN valRight);
 
 	abstract protected ExpressionArithmetique simplifier(ConstanteQ valLeft, ConstanteQ valRight);
@@ -63,7 +62,8 @@ public abstract class OpBinaire implements ExpressionArithmetique {
 				&& tm1right.toString().equals(tmp.right.simplifier().toString())
 				&& this.symbol.equals(tmp.symbol)) 
 			return true;
-		return false;
+		return false; 
 			
 	}
+	
 }

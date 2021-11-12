@@ -11,24 +11,24 @@ class testAddition {
 	void test() {
 		
 		ExpressionArithmetique addNN = new Addition(new ConstanteN(2), new ConstanteN(8));
-		assertEquals(addNN.toString(), "(2+8)");
-		assertEquals(addNN.simplifier().toString(), "10");
+		assertEquals("(2+8)",addNN.toString());
+		assertEquals("10",addNN.simplifier().toString());
 		
 		ExpressionArithmetique addQQ = new Addition(new ConstanteQ(2, 7), new ConstanteQ(4, 7));
-		assertEquals(addQQ.toString(), "((2/7)+(4/7))");
-		assertEquals(addQQ.simplifier().toString(), "(6/7)");
+		assertEquals("((2/7)+(4/7))",addQQ.toString());
+		assertEquals("(6/7)",addQQ.simplifier().toString());
 		
 		ExpressionArithmetique addNQ = new Addition(new ConstanteN(2), new ConstanteQ(4, 7));
-		assertEquals(addNQ.toString(), "(2+(4/7))");
-		assertEquals(addNQ.simplifier().toString(), "(18/7)");
+		assertEquals("(2+(4/7))",addNQ.toString());
+		assertEquals("(18/7)",addNQ.simplifier().toString());
 		
 		ExpressionArithmetique addQN = new Addition(new ConstanteQ(4, 7), new ConstanteN(2));
-		assertEquals(addQN.toString(), "((4/7)+2)");
-		assertEquals(addQN.simplifier().toString(), "(18/7)");
+		assertEquals("((4/7)+2)",addQN.toString());
+		assertEquals("(18/7)",addQN.simplifier().toString());
 		
 		ExpressionArithmetique addON = new Addition(ConstanteSymbolique.PI, new ConstanteN(5));
-		assertEquals(addON.toString(), "(π+5)");
-		assertEquals(addON.simplifier().toString(), "(π+5)");
+		assertEquals("(π+5)",addON.toString());
+		assertEquals("(π+5)",addON.simplifier().toString());
 		
 		//TEST Q5
 		 ConstanteN cst1 = new ConstanteN(10);
@@ -37,14 +37,14 @@ class testAddition {
 		 
 		 ExpressionArithmetique add1 = new Addition(cst1, cst2);
 		 ExpressionArithmetique add2 = new Addition(add1, cst3);
-		 assertEquals(add2.toString(), "((10+(1/2))+x)");
-		 assertEquals(add2.simplifier().toString(), "((21/2)+x)");
+		 assertEquals("((10+(1/2))+x)",add2.toString());
+		 assertEquals("((21/2)+x)",add2.simplifier().toString());
 		 
 		 ExpressionArithmetique add3 = new Addition(cst2, cst3);
 		 ExpressionArithmetique add4 = new Addition(cst1, add3);
-		 assertEquals(add4.toString(), "(10+((1/2)+x))");
-		 assertEquals(add4.simplifier().toString(), "(10+((1/2)+x))");
-		 
+		 assertEquals("(10+((1/2)+x))",add4.toString());
+		 assertEquals("(10+((1/2)+x))",add4.simplifier().toString());
+		
 	}
  
 }

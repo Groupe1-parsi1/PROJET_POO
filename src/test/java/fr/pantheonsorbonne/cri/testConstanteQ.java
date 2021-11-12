@@ -12,16 +12,16 @@ public class testConstanteQ {
 	@Test
 	public void test() {
 		ConstanteQ  cons = new ConstanteQ(6, 8);
-		assertEquals(cons.getNum(), 6);
-		assertEquals(cons.getDenum(), 8);
-		assertEquals(cons.toString(), "(6/8)");
-		assertEquals(cons.simplifier().toString(), "(3/4)");
+		assertEquals(6,cons.getNum());
+		assertEquals(8,cons.getDenum());
+		assertEquals("(6/8)",cons.toString());
+		assertEquals("(3/4)",cons.simplifier().toString());
 		
 		ConstanteQ  cons1 = new ConstanteQ(4, 2);
-		assertEquals(cons1.simplifier().toString(), "2");
+		assertEquals("2",cons1.simplifier().toString());
 		
 		ConstanteQ  cons2 = new ConstanteQ(1, 3);
-		assertEquals(cons2.simplifier().toString(), "(1/3)");
+		assertEquals("(1/3)",cons2.simplifier().toString());
 		
 		assertFalse(cons.equals(cons2));
 	}

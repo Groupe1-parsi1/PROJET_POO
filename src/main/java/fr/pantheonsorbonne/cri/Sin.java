@@ -1,10 +1,11 @@
 package fr.pantheonsorbonne.cri;
 
+import fr.pantheonsorbonne.cri.ConstanteSymbolique.ConstantesSymboliqueConnues;
+
 public class Sin extends OpUnaire {
 
 	public Sin(ExpressionArithmetique op) {
 		super(op, "sin");
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -13,7 +14,7 @@ public class Sin extends OpUnaire {
 	        if (val instanceof ConstanteSymbolique) {
 	            ConstanteSymbolique sinu = (ConstanteSymbolique) val;
 	            if (sinu.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI)
-	                return new ConstanteN(0);
+	                return new ConstanteN(0);  
 	        }
 	        if (val instanceof ConstanteN) {
 	            ConstanteN value = (ConstanteN) val;
@@ -27,6 +28,32 @@ public class Sin extends OpUnaire {
 	            	return new ConstanteQ(1, 2);
 	            else if (value.value == -30 || value.value == -150)
 	            	return new ConstanteQ(-1, 2);
+	        }
+	        if(val instanceof Division) {
+	        	Division div = (Division) val;
+	        	if(div.left instanceof ConstanteSymbolique) {
+	        		ConstanteSymbolique piLeft = (ConstanteSymbolique)div.left;
+	        		if(div.right instanceof ConstanteN) {
+	        			ConstanteN cstRight = (ConstanteN) div.right;
+	        			if(piLeft.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI && cstRight.value == 2)
+	        				return new ConstanteN(1);
+	        			else if(piLeft.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI && cstRight.value == -2)
+	        				return new ConstanteN(-1);
+	        			else if(piLeft.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI && cstRight.value == 6)
+	        				return new ConstanteQ(1,2);
+	        			else if(piLeft.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI && cstRight.value == -6)
+	        				return new ConstanteQ(-1, 2);
+	        			else if(piLeft.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI && cstRight.value == 3)
+	        				return new Division(new Sqrt(new ConstanteN(3)),new ConstanteN(2));
+	        			else if(piLeft.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI && cstRight.value == 4)
+	        				return new Division(new Sqrt(new ConstanteN(2)),new ConstanteN(2));
+	        			else if(piLeft.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI && cstRight.value == -3)
+	        				return new Division(new Sqrt(new ConstanteN(3)),new ConstanteN(-2));
+	        			else if(piLeft.constant == ConstanteSymbolique.ConstantesSymboliqueConnues.PI && cstRight.value == -4)
+	        				return new Division(new Sqrt(new ConstanteN(2)),new ConstanteN(-2)); 
+	        				
+	        		}
+	        	}
 	        }
 	        return new Sin(val);
 	}

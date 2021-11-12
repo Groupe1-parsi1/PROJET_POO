@@ -8,10 +8,6 @@ public class ConstanteN extends ConstanteExpressionArithmetique {
         this.value = value;
     }
 
-    public ConstanteN(double sqrt) {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
     public String toString() {
         return Long.toString(value);
@@ -24,5 +20,19 @@ public class ConstanteN extends ConstanteExpressionArithmetique {
    	public double calculer() {
    		return this.value;
    	}
+    
+    @Override
+    public boolean equals(Object ea) {
+    	if(this == ea) 
+			return true;
+		if(ea == null)
+			return false;
+		if(!(this.getClass() == ea.getClass())) 
+			return false;
+		ConstanteN tmp = (ConstanteN) ea;
+		if(this.value == tmp.value)
+			return true;
+		return false;
+    }
 
 }

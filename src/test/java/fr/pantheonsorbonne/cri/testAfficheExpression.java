@@ -40,7 +40,7 @@ class testAfficheExpression {
 		
 		ExpressionArithmetique resultat = new Soustraction(res1fini, res2fini);
 		
-		assertEquals(resultat.toString(), "((((sqrt(11))+(10/6))+((2+((14*x)*y))/(2*y)))-((11/x)*(((10/2)*((14*x)*y))-(9*(x^2)))))");
+		assertEquals("((((sqrt(11))+(10/6))+((2+((14*x)*y))/(2*y)))-((11/x)*(((10/2)*((14*x)*y))-(9*(x^2)))))",resultat.toString());
 	}
 
 }

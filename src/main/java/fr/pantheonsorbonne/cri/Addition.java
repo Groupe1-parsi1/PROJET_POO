@@ -31,4 +31,5 @@ public class Addition extends OpBinaire {
 	public double calculer() {
 		return this.left.calculer() + this.right.calculer();
 	}
+
 }
