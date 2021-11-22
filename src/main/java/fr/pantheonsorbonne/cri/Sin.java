@@ -1,7 +1,5 @@
 package fr.pantheonsorbonne.cri;
 
-import fr.pantheonsorbonne.cri.ConstanteSymbolique.ConstantesSymboliqueConnues;
-
 public class Sin extends OpUnaire {
 
 	public Sin(ExpressionArithmetique op) {
@@ -61,6 +59,11 @@ public class Sin extends OpUnaire {
 	@Override
 	public double calculer() {
 		return Math.sin(this.value.calculer());
+	}
+
+	@Override
+	public ExpressionArithmetique deriver() {
+		return new Multiplication(value.deriver(), new Cos(value));
 	}
 
 }

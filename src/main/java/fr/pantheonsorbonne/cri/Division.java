@@ -38,4 +38,46 @@ public class Division extends OpBinaire {
 		return this.left.calculer() / this.right.calculer();
 	}
 
+	@Override
+	public ExpressionArithmetique deriver() {
+		if(this.left instanceof VariableInconnue && this.right instanceof ConstanteN) {
+			ConstanteN tmp = (ConstanteN) this.right;
+			return new ConstanteQ(1, tmp.value);
+		}
+		else if (this.left instanceof VariableInconnue && this.right instanceof ConstanteQ) {
+			ConstanteQ tmp = (ConstanteQ) this.right;
+			return new ConstanteQ(tmp.denum, tmp.num);
+		}
+		else {
+			ExpressionArithmetique derlef = new Multiplication(this.left.deriver(), this.right).simplifier();
+			ExpressionArithmetique derRigh= new Multiplication(this.right.deriver(), this.left).simplifier(); 
+	
+			ExpressionArithmetique denumDer = new Puissance(this.right, new ConstanteN(2)).simplifier();
+			ExpressionArithmetique numDer = new Soustraction(derlef, derRigh).simplifier();
+			return new Division(numDer, denumDer);
+			
+		}
+	}
+
+	@Override
+	protected ExpressionArithmetique simplifier(ExpressionArithmetique valLeft, ConstanteN valRight) {
+		return this;
+	}
+
+	@Override
+	protected ExpressionArithmetique simplifier(ExpressionArithmetique valLeft, ConstanteQ valRight) {
+		return this;
+	}
+
+	@Override
+	protected ExpressionArithmetique simplifier(ConstanteN valLeft, ExpressionArithmetique valRight) {
+
+		return this;
+	}
+
+	@Override
+	protected ExpressionArithmetique simplifier(ConstanteQ valLeft, ExpressionArithmetique valRight) {
+		return this;
+	}
+
 }

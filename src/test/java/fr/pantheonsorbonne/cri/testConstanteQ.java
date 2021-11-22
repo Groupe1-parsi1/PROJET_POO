@@ -12,6 +12,7 @@ public class testConstanteQ {
 	@Test
 	public void test() {
 		ConstanteQ  cons = new ConstanteQ(6, 8);
+		
 		assertEquals(6,cons.getNum());
 		assertEquals(8,cons.getDenum());
 		assertEquals("(6/8)",cons.toString());
@@ -24,6 +25,10 @@ public class testConstanteQ {
 		assertEquals("(1/3)",cons2.simplifier().toString());
 		
 		assertFalse(cons.equals(cons2));
+		
+		ConstanteQ cst1 = new ConstanteQ(1, 2);
+		ConstanteQ cst2 = new ConstanteQ(4, 8);
+		assertTrue(cst1.equals(cst2));
 	}
 
 }

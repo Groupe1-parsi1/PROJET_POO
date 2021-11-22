@@ -4,6 +4,7 @@ public interface ExpressionArithmetique {
 
 	String toString();
 	ExpressionArithmetique simplifier();
+	ExpressionArithmetique deriver();
 	
 	public double calculer();
 

@@ -30,4 +30,9 @@ public class Ln extends OpUnaire {
 		return Math.log(this.value.calculer());
 	}
 
+	@Override
+	public ExpressionArithmetique deriver() {
+		return new Division(this.value.deriver().simplifier(), this.value);
+	}
+
 }

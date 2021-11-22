@@ -5,7 +5,7 @@ public abstract class OpUnaire implements ExpressionArithmetique {
     protected ExpressionArithmetique value;
     protected String operationName;
 
-    public OpUnaire(ExpressionArithmetique op, String operationName) {
+    protected OpUnaire(ExpressionArithmetique op, String operationName) {
         this.operationName = operationName;
         this.value = op;
     }
@@ -14,19 +14,26 @@ public abstract class OpUnaire implements ExpressionArithmetique {
     public String toString() {
         return "(" + this.operationName + "(" + value.toString() + "))"; 
     }
-    @Override
-    public boolean equals(Object ea) {
-    	if(this == ea) 
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
 			return true;
-		if(ea == null)
+		if (obj == null)
 			return false;
-		if(!(this.getClass() == ea.getClass())) 
+		if (getClass() != obj.getClass())
 			return false;
-		OpUnaire tmp = (OpUnaire) ea;
-		ExpressionArithmetique tmvaleur = tmp.value.simplifier();
-    	if(this.value.toString().equals(tmvaleur.toString()) 
-    			&& this.operationName.equals(tmp.operationName))
-    		return true; 
-    	else return false;
-    }
+		OpUnaire other = (OpUnaire) obj;
+		if (operationName == null) {
+			if (other.operationName != null)
+				return false;
+		} else if (!operationName.equals(other.operationName))
+			return false;
+		if (value == null) {
+			if (other.value != null)
+				return false;
+		} else if (!value.equals(other.value))
+			return false;
+		return true;
+	}
 }

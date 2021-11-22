@@ -22,11 +22,11 @@ public class Puissance extends OpBinaire {
 	
 	@Override
 	protected ExpressionArithmetique simplifier(ConstanteQ valLeft, ConstanteN valRight) {
-		double num = (double) valLeft.getNum();
-		double denum = (double) valLeft.getDenum();
-		double right = (double) valRight.value;
-		double resNum = Math.pow(num, right);
-		double resDenum = Math.pow(denum, right);
+		long num = valLeft.getNum();
+		long denum = valLeft.getDenum();
+		long right =  valRight.value;
+		long resNum = (long) Math.pow(num, right);
+		long resDenum = (long) Math.pow(denum, right);
 		
 		long resvalLeft = (long) resNum;
 		long resvalRight = (long) resDenum;
@@ -44,5 +44,44 @@ public class Puissance extends OpBinaire {
 		return Math.pow(this.left.calculer(), this.right.calculer());
 	}
 
+	@Override
+	public ExpressionArithmetique deriver() {
+		if(this.right instanceof ConstanteN) {
+			ConstanteN tmp = (ConstanteN) this.right;
+			ConstanteN right1 = new ConstanteN(tmp.value - 1);
+			if(right1.value == 1)
+				return new Multiplication(tmp.simplifier(), this.left);
+			
+			return new Multiplication(tmp.simplifier(), new Puissance((this.left.simplifier()), right1).simplifier()).simplifier();
+		}
+		else if (this.right instanceof ConstanteQ) {
+			ConstanteQ tmp = (ConstanteQ) this.right.simplifier();
+			ExpressionArithmetique sous = new Soustraction(tmp, new ConstanteN(1)).simplifier();
 
+			return new Multiplication(tmp.simplifier(), new Puissance(this.left.simplifier(),sous).simplifier()).simplifier();
+		}
+		else 
+			return new Multiplication(new Multiplication(left.deriver().simplifier(), this.simplifier()), new Ln(this)).simplifier();
+
+	}
+
+	@Override
+	protected ExpressionArithmetique simplifier(ExpressionArithmetique valLeft, ConstanteN valRight) {
+		return this;
+	}
+
+	@Override
+	protected ExpressionArithmetique simplifier(ExpressionArithmetique valLeft, ConstanteQ valRight) {
+		return this;
+	}
+
+	@Override
+	protected ExpressionArithmetique simplifier(ConstanteN valLeft, ExpressionArithmetique valRight) {
+		return this;
+	}
+
+	@Override
+	protected ExpressionArithmetique simplifier(ConstanteQ valLeft, ExpressionArithmetique valRight) {
+		return this;
+	}
 }

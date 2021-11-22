@@ -19,5 +19,19 @@ class testExponentielle {
 		assertEquals("(exp((2/4)))",expO.toString());
 		assertEquals("(exp((1/2)))",expO.simplifier().toString());
 	}
+	
+	@Test
+	void testDerivation() {
+		VariableInconnue x = new VariableInconnue('x');
+		ConstanteQ cstq = new ConstanteQ(3, 5);
+		
+		ExpressionArithmetique ex1 = new Multiplication(cstq, x);
+		
+		ExpressionArithmetique ex = new Exponentielle(x);
+		ExpressionArithmetique ex3 = new Exponentielle(ex1);
+		
+		assertEquals("(exp(x))", ex.deriver().toString());
+		assertEquals("((3/5)*(exp(((3/5)*x))))", ex3.deriver().toString());
+	}
 
 }

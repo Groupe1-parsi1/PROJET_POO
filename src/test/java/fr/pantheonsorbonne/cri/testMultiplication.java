@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 class testMultiplication {
 
 	@Test
-	void test() {
+	void test1() {
 		
 		ExpressionArithmetique mulNN = new Multiplication(new ConstanteN(2), new ConstanteN(8));
 		assertEquals("(2*8)",mulNN.toString());
@@ -36,5 +36,26 @@ class testMultiplication {
 		assertEquals("(π*5)",mulON.toString());
 		assertEquals("(π*5)",mulON.simplifier().toString());
 	}
+	
+	@Test
+	void testDerivation() {
+		ConstanteN cst = new ConstanteN(3);
+		ConstanteN cst1 = new ConstanteN(5);
+		ConstanteQ cstq = new ConstanteQ(3, 7);
+		VariableInconnue x = new VariableInconnue('x');
+		
+		ExpressionArithmetique ex = new Multiplication(cst, x);
+		ExpressionArithmetique mul = new Multiplication(x, cst);
+		ExpressionArithmetique ex1 = new Multiplication(cstq, x);
+		ExpressionArithmetique mul1 = new Multiplication(x, cstq);
+		
+		assertEquals("3", ex.deriver().toString());
+		assertEquals("3", mul.deriver().toString());
+		assertEquals("(3/7)", ex1.deriver().toString());
+		assertEquals("(3/7)", mul1.deriver().toString());
+
+		
+	}
+	
 
 }

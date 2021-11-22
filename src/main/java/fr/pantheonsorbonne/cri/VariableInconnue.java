@@ -17,11 +17,11 @@ public class VariableInconnue extends ConstanteExpressionArithmetique {
 		this.valeur = valeur;
 	}
 
+	@Override
 	public ExpressionArithmetique simplifier() {
 		if (this.valeur != null) {
 			return this.valeur;
 		}
-		// return new VariableInconnue(symbol);
 		return this;
 	}
 
@@ -36,6 +36,12 @@ public class VariableInconnue extends ConstanteExpressionArithmetique {
 	@Override
 	public double calculer() {
 		return 0.0;
+	}
+
+	@Override
+	public ExpressionArithmetique deriver() {
+		
+		return new ConstanteN(1);
 	}
 
 }

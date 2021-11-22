@@ -58,4 +58,11 @@ public class Cos extends OpUnaire {
    	public double calculer() {
    		return Math.cos(this.value.calculer());
    	}
+
+	@Override
+	public ExpressionArithmetique deriver() {
+		
+		return new Multiplication(new Multiplication(new ConstanteN(-1),this.value.deriver()),new Sin(value));
+
+	}
 }

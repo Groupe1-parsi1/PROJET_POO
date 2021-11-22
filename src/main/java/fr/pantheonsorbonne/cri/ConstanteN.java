@@ -27,12 +27,18 @@ public class ConstanteN extends ConstanteExpressionArithmetique {
 			return true;
 		if(ea == null)
 			return false;
-		if(!(this.getClass() == ea.getClass())) 
+		if((this.getClass() != ea.getClass())) 
 			return false;
 		ConstanteN tmp = (ConstanteN) ea;
 		if(this.value == tmp.value)
 			return true;
 		return false;
     }
+
+	@Override
+	public ExpressionArithmetique deriver() {
+		
+		return new ConstanteN(0);
+	}
 
 }
