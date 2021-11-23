@@ -2,6 +2,8 @@ package fr.pantheonsorbonne.cri;
 
 import static fr.pantheonsorbonne.cri.Utils.*;
 
+import javax.naming.spi.ObjectFactoryBuilder;
+
 public abstract class OpBinaire implements ExpressionArithmetique {
 
 	protected ExpressionArithmetique right;
@@ -76,22 +78,27 @@ public abstract class OpBinaire implements ExpressionArithmetique {
 		if (getClass() != obj.getClass())
 			return false;
 		OpBinaire other = (OpBinaire) obj;
+		
 		if (left == null) {
 			if (other.left != null)
 				return false;
-		} else if (!left.equals(other.left))
-			return false;
+			else if (!left.equals(other.left))
+				return false;
+		}
 		if (right == null) {
 			if (other.right != null)
 				return false;
-		} else if (!right.equals(other.right))
-			return false;
+			else if (!right.equals(other.right))
+				return false;
+		}
 		if (symbol == null) {
 			if (other.symbol != null)
 				return false;
-		} else if (!symbol.equals(other.symbol))
-			return false;
+			else if (!symbol.equals(other.symbol))
+				return false;
+		}
 		return true;
+		
 	}	
 }
  

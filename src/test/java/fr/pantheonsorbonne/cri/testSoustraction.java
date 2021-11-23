@@ -60,7 +60,11 @@ class testSoustraction {
 		 assertEquals("(2/7)",sou3.simplifier().toString());
 		 
 
-    	
+    	ConstanteN cstan1 = new ConstanteN(3);
+    	ConstanteN cstan2 = new ConstanteN(4);
+    	ExpressionArithmetique expres = new Soustraction(sous3a, cstan1);
+    	ExpressionArithmetique soustrax = new Soustraction(expres, cstan2);
+    	assertEquals("((x-3)-4)",soustrax.simplifier().toString());
     	
     	
 	}

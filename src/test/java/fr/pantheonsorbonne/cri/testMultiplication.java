@@ -35,6 +35,17 @@ class testMultiplication {
 		ExpressionArithmetique mulON = new Multiplication(ConstanteSymbolique.PI, new ConstanteN(5));
 		assertEquals("(π*5)",mulON.toString());
 		assertEquals("(π*5)",mulON.simplifier().toString());
+		
+		ExpressionArithmetique mul1 = new Multiplication(new ConstanteN(0), new ConstanteN(3));
+		ExpressionArithmetique mul2 = new Multiplication(new ConstanteN(3), new ConstanteN(0));
+		assertEquals("0",mul1.simplifier().toString());
+		assertEquals("0",mul2.simplifier().toString());
+		
+//		ExpressionArithmetique multipli = new Multiplication(new ConstanteQ(0, 3), new ConstanteQ(1, 4));
+//		ExpressionArithmetique multipli1 = new Multiplication(new ConstanteQ(1, 4), new ConstanteQ(0, 2));
+//		assertEquals("0",multipli.simplifier().toString());
+//		assertEquals("0", multipli1.simplifier().toString());
+
 	}
 	
 	@Test
@@ -53,7 +64,6 @@ class testMultiplication {
 		assertEquals("3", mul.deriver().toString());
 		assertEquals("(3/7)", ex1.deriver().toString());
 		assertEquals("(3/7)", mul1.deriver().toString());
-
 		
 	}
 	

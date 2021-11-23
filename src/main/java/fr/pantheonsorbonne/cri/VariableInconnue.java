@@ -32,6 +32,20 @@ public class VariableInconnue extends ConstanteExpressionArithmetique {
 		else
 			return valeur.toString();
 	}
+	
+	 @Override
+	    public boolean equals(Object ea) {
+		 if(this == ea) 
+				return true;
+			if(ea == null)
+				return false;
+			if((this.getClass() != ea.getClass())) 
+				return false;
+			VariableInconnue x = (VariableInconnue)ea;
+			if(this.symbole == x.symbole)
+				return true;
+			return false;
+	 }
 
 	@Override
 	public double calculer() {
@@ -43,5 +57,4 @@ public class VariableInconnue extends ConstanteExpressionArithmetique {
 		
 		return new ConstanteN(1);
 	}
-
 }

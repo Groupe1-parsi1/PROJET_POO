@@ -55,7 +55,7 @@ public class Multiplication extends OpBinaire {
 				if(tmp1.value == 0)
 					return tmp.right;
 			}else if(tmp.left instanceof ConstanteQ) {
-				ConstanteQ tmp1 = (ConstanteQ) tmp.left;
+				ConstanteQ tmp1 = (ConstanteQ) tmp.left; 
 				if(tmp1.num == 0)
 					return tmp.right;
 			}else if(tmp.right instanceof ConstanteN) {
