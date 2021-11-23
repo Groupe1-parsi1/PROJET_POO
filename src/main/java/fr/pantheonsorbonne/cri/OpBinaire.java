@@ -2,7 +2,6 @@ package fr.pantheonsorbonne.cri;
 
 import static fr.pantheonsorbonne.cri.Utils.*;
 
-import javax.naming.spi.ObjectFactoryBuilder;
 
 public abstract class OpBinaire implements ExpressionArithmetique {
 

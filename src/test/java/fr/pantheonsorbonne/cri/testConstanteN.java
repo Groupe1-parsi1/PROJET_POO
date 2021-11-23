@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import fr.pantheonsorbonne.cri.ConstanteN;
 
-public class testConstanteN {
+ class testConstanteN {
 
 	@Test
-	public void test() {
+	 void test() {
 		ConstanteN  cons = new ConstanteN(6);
 		assertEquals(6,cons.value);
 		assertEquals( "6",cons.toString());

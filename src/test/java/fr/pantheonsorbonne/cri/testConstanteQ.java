@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 
 
 
-public class testConstanteQ {
+ class testConstanteQ {
 
 	@Test
-	public void test() {
+	void test() {
 		ConstanteQ  cons = new ConstanteQ(6, 8);
 		
 		assertEquals(6,cons.getNum());

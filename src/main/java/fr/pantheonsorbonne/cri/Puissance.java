@@ -28,8 +28,8 @@ public class Puissance extends OpBinaire {
 		long resNum = (long) Math.pow(num, right);
 		long resDenum = (long) Math.pow(denum, right);
 		
-		long resvalLeft = (long) resNum;
-		long resvalRight = (long) resDenum;
+		long resvalLeft =  resNum;
+		long resvalRight =  resDenum;
 		
 		return new ConstanteQ(resvalLeft, resvalRight);
 	}
