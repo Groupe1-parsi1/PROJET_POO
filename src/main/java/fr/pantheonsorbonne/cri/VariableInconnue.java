@@ -2,8 +2,8 @@ package fr.pantheonsorbonne.cri;
 
 public class VariableInconnue extends ConstanteExpressionArithmetique {
 
-	public char symbole;
-	public ExpressionArithmetique valeur = null;
+	protected char symbole;
+	protected ExpressionArithmetique valeur = null;
 
 	public VariableInconnue(char symbole) {
 		this.symbole = symbole;
@@ -16,7 +16,8 @@ public class VariableInconnue extends ConstanteExpressionArithmetique {
 	public void setValeur(ExpressionArithmetique valeur) {
 		this.valeur = valeur;
 	}
-
+	
+	
 	@Override
 	public ExpressionArithmetique simplifier() {
 		if (this.valeur != null) {

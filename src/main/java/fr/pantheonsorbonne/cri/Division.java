@@ -69,6 +69,10 @@ public class Division extends OpBinaire {
 
 	@Override
 	protected ExpressionArithmetique simplifier(ExpressionArithmetique valLeft, ConstanteN valRight) {
+		if(valRight.value == 1)
+			return valLeft;
+		else if(valRight.value == 0)
+			return null;
 		return this;
 	}
 

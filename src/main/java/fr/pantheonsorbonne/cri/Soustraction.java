@@ -53,6 +53,8 @@ public class Soustraction extends OpBinaire {
 	
 	@Override
     public ExpressionArithmetique simplifier(ExpressionArithmetique ex1, ConstanteN ex2){
+		if(ex2.value == 0)
+			return ex1;
 		return this;	
     }
     

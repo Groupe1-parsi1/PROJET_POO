@@ -25,6 +25,8 @@ class testAffecterVariableSymbolique {
 		VariableInconnue a = new VariableInconnue('a');
 		VariableInconnue x = new VariableInconnue('x');
 		
+		assertEquals("a", a.toString());
+		
 		ExpressionArithmetique ex = new Soustraction(cst1, a);
 		ExpressionArithmetique ex1 = new Addition(x, ex);
 		

@@ -85,6 +85,8 @@ public class Multiplication extends OpBinaire {
 	protected ExpressionArithmetique simplifier(ExpressionArithmetique valLeft, ConstanteN valRight) {
 		if(valRight.value == 0)
 			return new ConstanteN(0);
+		if(valRight.value == 1)
+			return valLeft;
 		if(valLeft instanceof Multiplication) {
 			Multiplication mul = (Multiplication) valLeft.simplifier();
 			if(mul.right instanceof ConstanteN)
@@ -117,6 +119,8 @@ public class Multiplication extends OpBinaire {
 	protected ExpressionArithmetique simplifier(ConstanteN valLeft, ExpressionArithmetique valRight) {
 		if(valLeft.value == 0)
 			return new ConstanteN(0);
+		if(valLeft.value == 1)
+			return valRight;
 		if(valRight instanceof Multiplication) {
 			Multiplication mul = (Multiplication) valRight.simplifier();
 			if(mul.right instanceof ConstanteN)

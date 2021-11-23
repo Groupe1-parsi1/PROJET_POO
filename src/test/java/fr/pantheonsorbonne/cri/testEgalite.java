@@ -40,6 +40,7 @@ class testEgalite {
 	     
 	     assertFalse(ex31.equals(n1));
 	     assertFalse(ex31.equals(null));
+	    
 	     
 	     
 	     
