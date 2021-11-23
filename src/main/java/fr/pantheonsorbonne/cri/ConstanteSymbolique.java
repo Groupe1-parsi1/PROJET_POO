@@ -47,4 +47,9 @@ public class ConstanteSymbolique extends ConstanteExpressionArithmetique {
 	public ExpressionArithmetique deriver() {
 		return new ConstanteN(0);
 	}
+
+	@Override
+	public ExpressionArithmetique deriver(int n) {
+		return new ConstanteN(0);
+	}
 }

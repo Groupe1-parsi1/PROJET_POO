@@ -6,6 +6,7 @@ public interface ExpressionArithmetique {
 	ExpressionArithmetique simplifier();
 	ExpressionArithmetique deriver();
 	
+	ExpressionArithmetique deriver(int n);
 	public double calculer();
 
 }

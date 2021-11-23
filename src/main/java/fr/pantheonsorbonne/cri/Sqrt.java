@@ -54,4 +54,12 @@ public class Sqrt extends OpUnaire {
 		}else
 			return new Division(this.value.deriver(), new Multiplication(new ConstanteN(2), new Sqrt(value))).simplifier();
 	}
+	
+	@Override
+	public ExpressionArithmetique deriver(int n) {
+		ExpressionArithmetique tmp = this.simplifier();
+		for(int i = 0; i < n; i++)
+			tmp = tmp.deriver();
+		return tmp;
+	}
 }

@@ -20,6 +20,7 @@ class testMultiplication {
 		assertEquals("(2*8)",mulNN.toString());
 		assertEquals("16", mulNN.simplifier().toString()); 
 		
+		
 		ExpressionArithmetique mulQQ = new Multiplication(new ConstanteQ(2, 7), new ConstanteQ(4, 7));
 		assertEquals("((2/7)*(4/7))",mulQQ.toString());
 		assertEquals("(8/49)",mulQQ.simplifier().toString());
@@ -40,18 +41,12 @@ class testMultiplication {
 		ExpressionArithmetique mul2 = new Multiplication(new ConstanteN(3), new ConstanteN(0));
 		assertEquals("0",mul1.simplifier().toString());
 		assertEquals("0",mul2.simplifier().toString());
-		
-//		ExpressionArithmetique multipli = new Multiplication(new ConstanteQ(0, 3), new ConstanteQ(1, 4));
-//		ExpressionArithmetique multipli1 = new Multiplication(new ConstanteQ(1, 4), new ConstanteQ(0, 2));
-//		assertEquals("0",multipli.simplifier().toString());
-//		assertEquals("0", multipli1.simplifier().toString());
-
 	}
 	
 	@Test
 	void testDerivation() {
 		ConstanteN cst = new ConstanteN(3);
-		ConstanteN cst1 = new ConstanteN(5);
+		
 		ConstanteQ cstq = new ConstanteQ(3, 7);
 		VariableInconnue x = new VariableInconnue('x');
 		

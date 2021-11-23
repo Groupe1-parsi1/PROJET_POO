@@ -62,7 +62,16 @@ public class Cos extends OpUnaire {
 	@Override
 	public ExpressionArithmetique deriver() {
 		
-		return new Multiplication(new Multiplication(new ConstanteN(-1),this.value.deriver()),new Sin(value));
+		return new Multiplication(new Multiplication(new ConstanteN(-1),this.value.deriver()).simplifier(),new Sin(value)).simplifier();
 
 	}
+
+	@Override
+	public ExpressionArithmetique deriver(int n) {
+		ExpressionArithmetique tmp = this.simplifier();
+		for(int i = 0; i < n; i++)
+			tmp= tmp.deriver();
+		return tmp;
+	}
+	
 }

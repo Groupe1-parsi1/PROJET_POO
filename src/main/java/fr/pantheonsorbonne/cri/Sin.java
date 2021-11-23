@@ -63,7 +63,15 @@ public class Sin extends OpUnaire {
 
 	@Override
 	public ExpressionArithmetique deriver() {
-		return new Multiplication(value.deriver(), new Cos(value));
+		return new Multiplication(value.deriver().simplifier(), new Cos(value)).simplifier();
+	}
+	
+	@Override
+	public ExpressionArithmetique deriver(int n) {
+		ExpressionArithmetique tmp = this.simplifier();
+		for(int i = 0; i < n; i++)
+			tmp = tmp.deriver();
+		return tmp;
 	}
 
 }

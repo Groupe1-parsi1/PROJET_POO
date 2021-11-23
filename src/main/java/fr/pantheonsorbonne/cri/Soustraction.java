@@ -44,6 +44,14 @@ public class Soustraction extends OpBinaire {
 	}
 
 	@Override
+	public ExpressionArithmetique deriver(int n) {
+		ExpressionArithmetique tmp = this.simplifier();
+		for(int i = 0; i < n; i++)
+			tmp = tmp.deriver();
+		return tmp;
+	}
+	
+	@Override
     public ExpressionArithmetique simplifier(ExpressionArithmetique ex1, ConstanteN ex2){
 		return this;	
     }

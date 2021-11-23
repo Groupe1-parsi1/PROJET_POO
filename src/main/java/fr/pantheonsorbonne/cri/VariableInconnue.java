@@ -57,4 +57,11 @@ public class VariableInconnue extends ConstanteExpressionArithmetique {
 		
 		return new ConstanteN(1);
 	}
+	@Override
+	public ExpressionArithmetique deriver(int n) {
+		ExpressionArithmetique tmp = this.simplifier();
+		for(int i = 0; i < n; i++)
+			tmp = tmp.deriver();
+		return tmp;
+	}
 }

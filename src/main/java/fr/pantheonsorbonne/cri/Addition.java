@@ -110,5 +110,15 @@ public class Addition extends OpBinaire {
 	public ExpressionArithmetique deriver() {
 		return new Addition(this.left.deriver(), this.right.deriver()).simplifier();  
 	}
+
+
+	@Override
+	public ExpressionArithmetique deriver(int n) {
+		ExpressionArithmetique tmp = this.simplifier();
+		for(int i = 0; i < n; i++) {
+			tmp = tmp.deriver();
+		}
+		return tmp;
+	}
 	
 }

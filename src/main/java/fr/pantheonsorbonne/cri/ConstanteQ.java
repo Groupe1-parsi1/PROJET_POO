@@ -74,9 +74,8 @@ public class ConstanteQ extends ConstanteExpressionArithmetique {
 		return new ConstanteN(0);
 	}
 	
-	public static void main(String[] args) {
-		ConstanteQ c = new ConstanteQ(1, 2);
-		ConstanteQ c1 = new ConstanteQ(4, 8);
-		System.out.println(c.equals(c1));
+	@Override
+	public ExpressionArithmetique deriver(int n) {
+		return new ConstanteN(0);
 	}
 }

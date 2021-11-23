@@ -64,7 +64,86 @@ class testDerivation {
 		
 		assertEquals("(((-6*(x^4))+((-2/3)*(x^9)))+(exp((-6*(x^4)))))", s2.toString());
 		assertEquals("(((-24*(x^3))+(-6*(x^8)))+((-24*(x^3))*(exp((-6*(x^4))))))", s2.deriver().toString());
+		
+		assertEquals("0", cst1.deriver().toString());
+		assertEquals("0", cst1.deriver(2).toString());
+		
+		assertEquals("0", cstQ.deriver().toString());
+		assertEquals("0", cstQ.deriver(2).toString());
 			
+		
+	}
+	
+	@Test
+	void TestDerivationOrdreN() {
+		ConstanteN cst1 = new ConstanteN(3);
+		ConstanteN cst2 = new ConstanteN(4);
+		ConstanteN cst = new ConstanteN(2);
+		
+		VariableInconnue x = new VariableInconnue('x');
+		
+		assertEquals("0", x.deriver(3).toString());
+		
+		ExpressionArithmetique pui = new Puissance(x, cst1); //x^3
+		ExpressionArithmetique pui2 = new Puissance(x, cst); // x^2
+		ExpressionArithmetique pui3 = new Multiplication(cst1, pui2);
+		ExpressionArithmetique ex = new Addition(pui, pui3);
+		ExpressionArithmetique exSous = new Soustraction(pui, pui3);
+		
+		assertEquals("((6*x)+6)", ex.deriver(2).toString());
+		assertEquals("6", ex.deriver(3).toString());
+		
+		assertEquals("((6*x)-6)", exSous.deriver(2).toString());
+		assertEquals("6", exSous.deriver(3).toString());
+		
+		ExpressionArithmetique exCos = new Cos(pui);
+		assertEquals("((-3*(x^2))*(sin((x^3))))", exCos.deriver().toString());
+		assertEquals("(((-6*x)*(sin((x^3))))+((-3*(x^2))*((3*(x^2))*(cos((x^3))))))", exCos.deriver(2).toString());
+		
+		
+		ExpressionArithmetique exSin = new Sin(pui);
+		assertEquals("((3*(x^2))*(cos((x^3))))", exSin.deriver().toString());
+		assertEquals("(((6*x)*(cos((x^3))))+((3*(x^2))*((-3*(x^2))*(sin((x^3))))))", exSin.deriver(2).toString());
+		
+		ExpressionArithmetique exLn = new Ln(pui);
+		assertEquals("((3*(x^2))/(x^3))", exLn.deriver().toString());
+		assertEquals("((((6*x)*(x^3))-((3*(x^2))*(3*(x^2))))/((x^3)^2))", exLn.deriver(2).toString());
+		
+		ExpressionArithmetique exExpo = new Exponentielle(pui);
+		assertEquals("((3*(x^2))*(exp((x^3))))", exExpo.deriver().toString());
+		assertEquals("(((6*x)*(exp((x^3))))+((3*(x^2))*((3*(x^2))*(exp((x^3))))))", exExpo.deriver(2).toString());
+		
+		ExpressionArithmetique exSqrt = new Sqrt(pui);
+		assertEquals("((3*(x^2))/(2*(sqrt((x^3)))))", exSqrt.deriver().toString());
+		assertEquals("((((6*x)*(2*(sqrt((x^3)))))-((2*((3*(x^2))/(2*(sqrt((x^3))))))*(3*(x^2))))/((2*(sqrt((x^3))))^2))", exSqrt.deriver(2).toString());
+	}
+	
+	@Test
+	void test15() {
+		ConstanteN deux = new ConstanteN(2);
+		ConstanteN trois = new ConstanteN(3);
+		ConstanteN quatre = new ConstanteN(4);
+		ConstanteN cinq = new ConstanteN(5);
+		ConstanteN dix = new ConstanteN(10);
+		
+		VariableInconnue x = new VariableInconnue('x');
+		
+		ExpressionArithmetique mul1 = new Multiplication(cinq, new Puissance(x, quatre));
+		ExpressionArithmetique mul2 = new Multiplication(quatre, new Puissance(x, trois));
+		ExpressionArithmetique mul3 = new Multiplication(trois, new Puissance(x, deux));
+		ExpressionArithmetique mul4 = new Multiplication(cinq, x);
+		ExpressionArithmetique expo = new Exponentielle(new Multiplication(new ConstanteN(-3), x));
+		
+		ExpressionArithmetique ad1 = new Addition(mul1, mul2);
+		ExpressionArithmetique ad2 = new Addition(ad1, mul3);
+		ExpressionArithmetique ad3 = new Addition(ad2, mul4);
+		ExpressionArithmetique ad4 = new Addition(ad3, new ConstanteN(10));
+		//ExpressionArithmetique ad5 = new Addition(ad4, new ConstanteN(10));
+		ExpressionArithmetique ad5 = new Addition(ad4, expo);
+		
+		
+		assertEquals("((((((5*(x^4))+(4*(x^3)))+(3*(x^2)))+(5*x))+10)+(exp((-3*x))))", ad5.toString());
+		assertEquals("(((120*x)+24)+(-27*(exp((-3*x)))))",ad5.deriver(3).toString());
 		
 	}
 

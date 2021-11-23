@@ -64,6 +64,14 @@ public class Puissance extends OpBinaire {
 			return new Multiplication(new Multiplication(left.deriver().simplifier(), this.simplifier()), new Ln(this)).simplifier();
 
 	}
+	
+	@Override
+	public ExpressionArithmetique deriver(int n) {
+		ExpressionArithmetique tmp = this.simplifier();
+		for(int i = 0; i < n; i++)
+			tmp = tmp.deriver();
+		return tmp;
+	}
 
 	@Override
 	protected ExpressionArithmetique simplifier(ExpressionArithmetique valLeft, ConstanteN valRight) {
