@@ -11,7 +11,6 @@ class testAffecterVariableSymbolique {
 		ConstanteN cst1 = new ConstanteN(3);
 		ConstanteN cst2 = new ConstanteN(7);
 		VariableInconnue x = new VariableInconnue('x');
-		
 		ExpressionArithmetique ex = new Addition(cst1, x);
 		
 		x.setValeur(cst2);
