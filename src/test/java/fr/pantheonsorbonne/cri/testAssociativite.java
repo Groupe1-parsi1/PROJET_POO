@@ -13,7 +13,7 @@ class testAssociativite {
 		ConstanteQ cstq = new ConstanteQ(1, 2);
 		ConstanteQ cstq1 = new ConstanteQ(1, 3);
 		
-		VariableInconnue x = new VariableInconnue('x');
+		VariableInconnue x = new VariableInconnue("x");
 		
 		ExpressionArithmetique ex1n = new Addition(cst, x); // 2+ x
 		ExpressionArithmetique ex1q = new Addition(cstq, x); // 1/2 + x
@@ -67,7 +67,7 @@ class testAssociativite {
 		ConstanteQ cstq = new ConstanteQ(1, 2);
 		ConstanteQ cstq1 = new ConstanteQ(1, 3);
 		
-		VariableInconnue x = new VariableInconnue('x');
+		VariableInconnue x = new VariableInconnue("x");
 		
 		ExpressionArithmetique ex1 = new Multiplication(cst, x); //2x
 		ExpressionArithmetique ex2 = new Multiplication(cstq, x); // 1/2 x

@@ -42,7 +42,7 @@ class testDivision {
 		
 		 ConstanteN sous1 = new ConstanteN(10);
 		 ConstanteQ sous2 = new ConstanteQ(1, 2);
-		 VariableInconnue sous3 = new VariableInconnue('x');
+		 VariableInconnue sous3 = new VariableInconnue("x");
 		 
 		 ExpressionArithmetique divi = new Division(sous1, sous2);
 		 ExpressionArithmetique divi1 = new Division(sous3, divi);

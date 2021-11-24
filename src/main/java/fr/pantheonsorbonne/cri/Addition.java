@@ -130,4 +130,101 @@ public class Addition extends OpBinaire {
 		return tmp;
 	}
 	
+	protected ExpressionArithmetique factoriser1( Addition gauche, Puissance droite) {
+		ConstanteN deux = new ConstanteN(2);
+		if(gauche.left instanceof Puissance) {
+			
+			Puissance carreGauche = (Puissance) gauche.left;
+			VariableInconnue varSymb1 = getVariableSymbolique(carreGauche);
+			VariableInconnue varSymb2 = getVariableSymbolique(droite);
+			ExpressionArithmetique gaucheIdentiteRemarquable = new Addition( new Puissance(varSymb1,deux),new Multiplication(deux,new Multiplication(varSymb1,varSymb2)));
+			if(gauche.equals(gaucheIdentiteRemarquable))
+			{
+				return (new Puissance(new Addition(varSymb1,varSymb2),new ConstanteN(2)));
+			}
+		}
+		return null;
+	}
+	
+	protected ExpressionArithmetique factoriser2( Addition gauche, Multiplication droite) {
+		ConstanteN deux = new ConstanteN(2);
+		if(gauche.left instanceof Multiplication) {
+			Multiplication multiplGauche = (Multiplication)gauche.left;
+		
+			if(multiplGauche.right instanceof Puissance) {
+				Puissance carreGauche = (Puissance) multiplGauche.right;
+				VariableInconnue varSymb1 = getVariableSymbolique(carreGauche);
+				if(droite.right instanceof Puissance) {
+					Puissance carreDroit = (Puissance) droite.right;
+					VariableInconnue varSymb2 = getVariableSymbolique(carreDroit);
+	
+					if(droite.left instanceof ConstanteN) {
+						ConstanteN coef = (ConstanteN) droite.left;
+						ConstanteN coefFois2 = new ConstanteN(coef.getValue() * 2);
+						ExpressionArithmetique gaucheIdentiteRemarquable = new Addition( new Multiplication(coef,new Puissance(varSymb1,deux)),new Multiplication(coefFois2,new Multiplication(varSymb1,varSymb2)));
+						if(gauche.equals(gaucheIdentiteRemarquable))
+						{
+							return (new Multiplication(coef , new Puissance(new Addition(varSymb1,varSymb2),new ConstanteN(2))));
+						}
+					}
+				}
+			
+			}
+		}
+		return this;
+	}
+	
+	
+
+	protected ExpressionArithmetique factoriser3( Soustraction gauche, Puissance droite) {
+		ConstanteN deux = new ConstanteN(2);
+		if(gauche.left instanceof Puissance) {
+			Puissance carreGauche = (Puissance) gauche.left;
+			VariableInconnue varSymb1 = getVariableSymbolique(carreGauche);
+	
+			VariableInconnue varSymb2 = getVariableSymbolique(droite);
+			ExpressionArithmetique gaucheIdentiteRemarquable = new Soustraction( new Puissance(varSymb1,deux),new Multiplication(deux,new Multiplication(varSymb1,varSymb2)));
+			if(gauche.equals(gaucheIdentiteRemarquable))
+			{
+			return (new Puissance(new Soustraction(varSymb1,varSymb2),new ConstanteN(2)));
+			}
+		}
+		return this;
+	}
+
+
+	protected ExpressionArithmetique factoriser4( Soustraction gauche, Multiplication droite) {
+		ConstanteN deux = new ConstanteN(2);
+		if(gauche.left instanceof Multiplication) {
+			
+			Multiplication multiplGauche = (Multiplication)gauche.left;
+			if (multiplGauche.right instanceof Puissance) {
+				Puissance carreGauche = (Puissance) multiplGauche.right;
+				VariableInconnue varSymb1 = getVariableSymbolique(carreGauche);
+				if(droite.right instanceof Puissance) {
+					Puissance carreDroit = (Puissance) droite.right;
+					VariableInconnue varSymb2 = getVariableSymbolique(carreDroit);
+					
+					if(droite.left instanceof ConstanteN) {
+						ConstanteN coef = (ConstanteN) droite.left;
+						ConstanteN coefFois2 = new ConstanteN(coef.getValue() * 2);
+
+						ExpressionArithmetique gaucheIdentiteRemarquable = new Soustraction( new Multiplication(coef,new Puissance(varSymb1,deux)),new Multiplication(coefFois2,new Multiplication(varSymb1,varSymb2)));
+						
+						if(gauche.equals(gaucheIdentiteRemarquable))
+						{
+							return (new Multiplication(coef , new Puissance(new Soustraction(varSymb1,varSymb2),new ConstanteN(2)))).simplifier();
+						}
+					}
+				}
+			}
+		}
+		
+		return this;
+	}
+	
+	private static VariableInconnue getVariableSymbolique(Puissance puiss) {
+		return (new VariableInconnue(puiss.left.toString()));
+}
+	
 }

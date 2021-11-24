@@ -2,14 +2,14 @@ package fr.pantheonsorbonne.cri;
 
 public class VariableInconnue extends ConstanteExpressionArithmetique {
 
-	protected char symbole;
+	protected String symbole;
 	protected ExpressionArithmetique valeur = null;
 
-	public VariableInconnue(char symbole) {
+	public VariableInconnue(String symbole) {
 		this.symbole = symbole;
 	}
 
-	public char getSymbole() {
+	public String getSymbole() {
 		return this.symbole;
 	}
 

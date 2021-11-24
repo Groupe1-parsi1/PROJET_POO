@@ -9,7 +9,7 @@ class testSimplificationNeutre {
 
 	@Test
 	void test() {
-		VariableInconnue x = new VariableInconnue('x');
+		VariableInconnue x = new VariableInconnue("x");
 		ConstanteN zero = new ConstanteN(0);
 		ConstanteN un = new ConstanteN(1);
 		ExpressionArithmetique add = new Addition(x, zero);

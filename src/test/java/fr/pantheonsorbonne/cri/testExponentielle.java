@@ -22,7 +22,7 @@ class testExponentielle {
 	
 	@Test
 	void testDerivation() {
-		VariableInconnue x = new VariableInconnue('x');
+		VariableInconnue x = new VariableInconnue("x");
 		ConstanteQ cstq = new ConstanteQ(3, 5);
 		
 		ExpressionArithmetique ex1 = new Multiplication(cstq, x);

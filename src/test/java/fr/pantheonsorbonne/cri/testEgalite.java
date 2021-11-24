@@ -14,8 +14,8 @@ class testEgalite {
 	     ConstanteN n3 = new ConstanteN(5);
 	     ConstanteQ q1 = new ConstanteQ(2, 4);
 	     ConstanteQ q2 = new ConstanteQ(1, 2);
-	     VariableInconnue x = new VariableInconnue('x');
-	     VariableInconnue y = new VariableInconnue('x');
+	     VariableInconnue x = new VariableInconnue("x");
+	     VariableInconnue y = new VariableInconnue("x");
 	     
 	     assertTrue(x.equals(y));
 	     assertTrue(x.equals(x));

@@ -33,7 +33,7 @@ class testPuissance {
 		ConstanteQ cstq = new ConstanteQ(3, 7);
 		ConstanteQ cstq1 = new ConstanteQ(5, 3);
 		
-		VariableInconnue x = new VariableInconnue('x');
+		VariableInconnue x = new VariableInconnue("x");
 		
 		ExpressionArithmetique puis1 = new Puissance(x, cst1); // x^3
 		ExpressionArithmetique puis4 = new Puissance(x, new ConstanteN(2));

@@ -10,7 +10,7 @@ class testAffecterVariableSymbolique {
 	void test1() {
 		ConstanteN cst1 = new ConstanteN(3);
 		ConstanteN cst2 = new ConstanteN(7);
-		VariableInconnue x = new VariableInconnue('x');
+		VariableInconnue x = new VariableInconnue("x");
 		
 		ExpressionArithmetique ex = new Addition(cst1, x);
 		
@@ -22,8 +22,8 @@ class testAffecterVariableSymbolique {
 	void test1a() {
 		ConstanteQ cst1 = new ConstanteQ(5, 9);
 		ConstanteQ cst2 = new ConstanteQ(2, 9);
-		VariableInconnue a = new VariableInconnue('a');
-		VariableInconnue x = new VariableInconnue('x');
+		VariableInconnue a = new VariableInconnue("a");
+		VariableInconnue x = new VariableInconnue("x");
 		
 		assertEquals("a", a.toString());
 		
@@ -38,7 +38,7 @@ class testAffecterVariableSymbolique {
 	void test2() {
 		ConstanteN cst1 = new ConstanteN(5);
 	
-		VariableInconnue x = new VariableInconnue('x');
+		VariableInconnue x = new VariableInconnue("x");
 		
 		ExpressionArithmetique ex = new Addition(cst1, x);
 		

@@ -55,7 +55,7 @@ class testSin {
 	    	assertEquals("(sin(e))",sinEx.toString());
 			assertEquals( "(sin(e))",sinEx.simplifier().toString());	
 			
-			VariableInconnue x = new VariableInconnue('y');
+			VariableInconnue x = new VariableInconnue("y");
 	    	ExpressionArithmetique sinVa = new Sin(x);
 	    	assertEquals("(sin(y))",sinVa.toString());
 	    	assertEquals( "(sin(y))",sinVa.simplifier().toString());

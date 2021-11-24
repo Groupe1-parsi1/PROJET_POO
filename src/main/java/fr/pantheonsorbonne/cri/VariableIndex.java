@@ -4,7 +4,7 @@ public class VariableIndex extends VariableInconnue {
 
 private ExpressionArithmetique index;
 	
-	public VariableIndex(char symbole, ExpressionArithmetique index) {
+	public VariableIndex(String symbole, ExpressionArithmetique index) {
 		super(symbole);
 		this.index = index;
 	}
