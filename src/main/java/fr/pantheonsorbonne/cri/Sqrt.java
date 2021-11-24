@@ -41,4 +41,25 @@ public class Sqrt extends OpUnaire {
 	public double calculer() {
 		return Math.sqrt(this.value.calculer());
 	}
+
+	@Override
+	public ExpressionArithmetique deriver() {
+		if(this.value instanceof ConstanteN || this.value instanceof ConstanteQ)
+			return new ConstanteN(0);
+		else if(this.value instanceof VariableInconnue) {
+			VariableInconnue x = (VariableInconnue) this.value;
+			ExpressionArithmetique ex = new Sqrt(x);
+			ExpressionArithmetique res = new Multiplication(new ConstanteN(2), ex);
+			return new Division(new ConstanteN(1), res).simplifier();
+		}else
+			return new Division(this.value.deriver(), new Multiplication(new ConstanteN(2), new Sqrt(value))).simplifier();
+	}
+	
+	@Override
+	public ExpressionArithmetique deriver(int n) {
+		ExpressionArithmetique tmp = this.simplifier();
+		for(int i = 0; i < n; i++)
+			tmp = tmp.deriver();
+		return tmp;
+	}
 }

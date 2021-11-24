@@ -16,7 +16,6 @@ public class testSomme {
 
 		ExpressionArithmetique multi = new Multiplication(alphai, pow);
 		ExpressionArithmetique somme = new Somme(multi, 0, 4);
-		System.out.println(somme.toString());
-//		assertEquals("(α0 + (α1 * x) + (α2 * (x^2)) + (α3 * (x^3)) + (α4 * (x^4)))", somme.simplifier().toString());
+		assertEquals("((((((1+x)+(α0*(x^0)))+(α1*(x^1)))+(α2*(x^2)))+(α3*(x^3)))+(α4*(x^4)))", somme.simplifier().toString());
 	}
 }

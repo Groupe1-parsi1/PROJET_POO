@@ -2,13 +2,14 @@ package fr.pantheonsorbonne.cri;
 
 import static fr.pantheonsorbonne.cri.Utils.*;
 
+
 public abstract class OpBinaire implements ExpressionArithmetique {
 
 	protected ExpressionArithmetique right;
 	protected ExpressionArithmetique left;
 	protected String symbol;
 
-	public OpBinaire(ExpressionArithmetique leftOp, ExpressionArithmetique rightOp, String symbol) {
+	protected OpBinaire(ExpressionArithmetique leftOp, ExpressionArithmetique rightOp, String symbol) {
 		left = leftOp;
 		right = rightOp;
 		this.symbol = symbol;
@@ -16,7 +17,7 @@ public abstract class OpBinaire implements ExpressionArithmetique {
 
 	@Override
 	public String toString() {
-		return "(" + left.toString() + this.symbol + right.toString() + ")";
+		return "(" + this.left.toString() + this.symbol + this.right.toString() + ")";
 	}
 
 	@Override
@@ -31,9 +32,22 @@ public abstract class OpBinaire implements ExpressionArithmetique {
 			return simplifier(toN(this.left), toQ(this.right));
 		} else if (this.left instanceof ConstanteQ && this.right instanceof ConstanteN) {
 			return simplifier(toQ(this.left), toN(this.right));
-		} 
+		} else if(this.left instanceof ExpressionArithmetique && this.right instanceof ConstanteN) {
+			ConstanteN cst = (ConstanteN) this.right;
+			return simplifier(this.left, cst);
+		}else if(this.left instanceof ExpressionArithmetique && this.right instanceof ConstanteQ) {
+			ConstanteQ cst = (ConstanteQ) this.right;
+			return simplifier(this.left, cst);
+		}else if(this.left instanceof ConstanteN && this.right instanceof ExpressionArithmetique) {
+			ConstanteN cst = (ConstanteN) this.left;
+			return simplifier(cst, this.right);
+		}else if(this.left instanceof ConstanteQ && this.right instanceof ExpressionArithmetique) {
+			ConstanteQ cst = (ConstanteQ) this.left;
+			return simplifier(cst, this.right);
+		}
 		return this;
 	}
+	
 
 	protected ExpressionArithmetique simplifier(ConstanteQ toQ, ConstanteN toN) {
 		return simplifier(toN(this.right), toQ(this.left));
@@ -47,23 +61,43 @@ public abstract class OpBinaire implements ExpressionArithmetique {
 		return simplifier(new ConstanteQ(valLeft.value, 1), valRight); 
 	}
 	
-	@Override
-	public boolean equals(Object ea) {
-		if(this == ea)
-			return true;
-		if(ea == null)
-			return false;
-		if(!(this.getClass() == ea.getClass()))
-			return false;
-		OpBinaire tmp = (OpBinaire)ea;
-		ExpressionArithmetique tm1left = this.left.simplifier();
-		ExpressionArithmetique tm1right = this.right.simplifier();
-		if(tm1left.toString().equals(tmp.left.simplifier().toString()) 
-				&& tm1right.toString().equals(tmp.right.simplifier().toString())
-				&& this.symbol.equals(tmp.symbol)) 
-			return true;
-		return false; 
-			
-	}
 	
+	abstract protected ExpressionArithmetique simplifier(ExpressionArithmetique valLeft, ConstanteN valRight);
+	abstract protected ExpressionArithmetique simplifier(ExpressionArithmetique valLeft, ConstanteQ valRight);
+	abstract protected ExpressionArithmetique simplifier(ConstanteN valLeft, ExpressionArithmetique valRight);
+	abstract protected ExpressionArithmetique simplifier(ConstanteQ valLeft, ExpressionArithmetique valRight);
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OpBinaire other = (OpBinaire) obj;
+		
+		if (left == null) {
+			if (other.left != null)
+				return false;
+			else if (!left.equals(other.left))
+				return false;
+		}
+		if (right == null) {
+			if (other.right != null)
+				return false;
+			else if (!right.equals(other.right))
+				return false;
+		}
+		if (symbol == null) {
+			if (other.symbol != null)
+				return false;
+			else if (!symbol.equals(other.symbol))
+				return false;
+		}
+		return true;
+		
+	}	
 }
+ 

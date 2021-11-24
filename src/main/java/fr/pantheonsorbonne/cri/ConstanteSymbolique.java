@@ -3,9 +3,9 @@ package fr.pantheonsorbonne.cri;
 
 public class ConstanteSymbolique extends ConstanteExpressionArithmetique {
 
-	public static ExpressionArithmetique PI = new ConstanteSymbolique(ConstantesSymboliqueConnues.PI);
+	public static final ExpressionArithmetique PI = new ConstanteSymbolique(ConstantesSymboliqueConnues.PI);
 
-	public static ExpressionArithmetique E = new ConstanteSymbolique(ConstantesSymboliqueConnues.EXPONENTIELLE);
+	public static final ExpressionArithmetique E = new ConstanteSymbolique(ConstantesSymboliqueConnues.EXPONENTIELLE);
 
 	public ConstanteSymbolique(ConstantesSymboliqueConnues constanteConnue) {
 		this.constant = constanteConnue;
@@ -43,5 +43,13 @@ public class ConstanteSymbolique extends ConstanteExpressionArithmetique {
 		return this.constant.getValeur();
 	}
 
+	@Override
+	public ExpressionArithmetique deriver() {
+		return new ConstanteN(0);
+	}
 
+	@Override
+	public ExpressionArithmetique deriver(int n) {
+		return new ConstanteN(0);
+	}
 }

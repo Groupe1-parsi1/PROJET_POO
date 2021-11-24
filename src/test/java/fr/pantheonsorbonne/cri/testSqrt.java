@@ -35,6 +35,28 @@ class testSqrt {
 		
 		
 	}
+	
+	@Test
+	void testDerivation() {
+		ConstanteN cst = new ConstanteN(3);
+		ConstanteQ cstq = new ConstanteQ(3, 5);
+		VariableInconnue x = new VariableInconnue('x');
+		
+		ExpressionArithmetique mul = new Multiplication(cst, x);
+		
+		ExpressionArithmetique sqrt1 = new Sqrt(cst);
+		ExpressionArithmetique sqrt2 = new Sqrt(cstq);
+		ExpressionArithmetique sqrt3 = new Sqrt(x);
+		ExpressionArithmetique sqrt4 = new Sqrt(mul);
+		
+		assertEquals("0", sqrt1.deriver().toString());
+		
+		assertEquals("0", sqrt2.deriver().toString());
+		
+		assertEquals("(1/(2*(sqrt(x))))",sqrt3.deriver().toString());
+		
+		assertEquals("(3/(2*(sqrt((3*x)))))", sqrt4.deriver().toString());
+	}
 
 }
 

@@ -15,6 +15,14 @@ class testEgalite {
 	     ConstanteQ q1 = new ConstanteQ(2, 4);
 	     ConstanteQ q2 = new ConstanteQ(1, 2);
 	     VariableInconnue x = new VariableInconnue('x');
+	     VariableInconnue y = new VariableInconnue('x');
+	     
+	     assertTrue(x.equals(y));
+	     assertTrue(x.equals(x));
+	     
+	     assertFalse(n1.equals(q1));
+	     assertFalse(n1.equals(null));
+	     
 	     
 	     ExpressionArithmetique ex3 = new Addition(q1, x); 
 	     ExpressionArithmetique ex5 = new Addition(q2, x);
@@ -30,6 +38,11 @@ class testEgalite {
 	     assertTrue(ex4.equals(ex6));
 	     assertTrue(n1.equals(n11));
 	     
+	     assertFalse(ex31.equals(n1));
+	     assertFalse(ex31.equals(null));
+	    
+	     
+	     
 	     
 	     ConstanteQ cst1 = new ConstanteQ(1, 2);
 	     ConstanteQ cst2 = new ConstanteQ(1, 2);
@@ -39,6 +52,17 @@ class testEgalite {
 	     assertTrue(ex1.equals(ex2)); 
 	     assertFalse(ex1.equals(cst3));
 	     
+	     assertFalse(x.equals(cst1));
+	     assertFalse(x.equals(null));
+	     
+	     ExpressionArithmetique exUni = new Sqrt(n1);
+	     ExpressionArithmetique exUni1 = new Sqrt(n11);
+	     ExpressionArithmetique exUni2 = new Sqrt(q1);
+	     
+	     assertTrue(exUni.equals(exUni1));
+	     
+	     assertFalse(exUni.equals(null));
+	     assertFalse(exUni.equals(exUni2));
 	     
 	    
 	}

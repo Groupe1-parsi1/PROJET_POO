@@ -43,7 +43,7 @@ class testAddition {
 		 ExpressionArithmetique add3 = new Addition(cst2, cst3);
 		 ExpressionArithmetique add4 = new Addition(cst1, add3);
 		 assertEquals("(10+((1/2)+x))",add4.toString());
-		 assertEquals("(10+((1/2)+x))",add4.simplifier().toString());
+		 assertEquals("(x+(21/2))",add4.simplifier().toString());
 		
 	}
  

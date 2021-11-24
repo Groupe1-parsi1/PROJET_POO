@@ -22,4 +22,28 @@ public class Exponentielle extends OpUnaire {
 		return Math.exp(this.value.calculer());
 	}
 
+
+	@Override
+	public ExpressionArithmetique deriver() {
+		ExpressionArithmetique derVal = this.value.deriver().simplifier();
+		if(derVal instanceof ConstanteN) {
+			ConstanteN tmp = (ConstanteN) derVal;
+			if(tmp.value == 1)
+				return this.simplifier();
+		}else if(derVal instanceof ConstanteQ) {
+			ConstanteQ tmp = (ConstanteQ) derVal;
+			if(tmp.denum == tmp.num)
+				return this.simplifier();
+		}	
+		return new Multiplication(this.value.deriver(), this).simplifier();
+	}
+	
+	@Override
+	public ExpressionArithmetique deriver(int n) {
+		ExpressionArithmetique tmp = this.simplifier();
+		for(int i = 0; i < n; i++)
+			tmp = tmp.deriver();
+		return tmp;
+	}
+
 }

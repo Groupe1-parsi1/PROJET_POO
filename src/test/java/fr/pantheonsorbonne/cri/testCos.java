@@ -16,12 +16,10 @@ class testCos {
     	ExpressionArithmetique cosinus = new Cos(cst1);
     	assertEquals("(cos(30))",cosinus.toString());
 		assertEquals("(cos(30))",cosinus.simplifier().toString());
-		
 		ConstanteN cst2 = new ConstanteN(-120);
     	ExpressionArithmetique testcos = new Cos(cst2);
     	assertEquals("(cos(-120))",testcos.toString());
 		assertEquals("(-1/2)",testcos.simplifier().toString());
-		
 		ExpressionArithmetique cosO = new Cos(new ConstanteN(2));
 		assertEquals("(cos(2))",cosO.toString());
 		assertEquals("(cos(2))",cosO.simplifier().toString());

@@ -50,21 +50,32 @@ public class ConstanteQ extends ConstanteExpressionArithmetique {
 		public double calculer() {
 			return (double) this.num / this.denum;
 		}
-	 
-	 @Override
-	    public boolean equals(Object ea) {
-		 if(this == ea) 
-				return true;
-			if(ea == null)
-				return false;
-			if(!(this.getClass() == ea.getClass())) 
-				return false;
-			ConstanteQ tmp = (ConstanteQ) ea;
-			ConstanteQ thisConstant = (ConstanteQ) this.simplifier();
-			ConstanteQ tmpConstant = (ConstanteQ) this.simplifier();
-			if(thisConstant.denum == tmpConstant.denum && thisConstant.num == tmp.num)
-				return true;
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
 			return false;
-			
-	 }
+		if (getClass() != obj.getClass())
+			return false;
+		ConstanteQ other = (ConstanteQ) obj;
+		ExpressionArithmetique tmp = other.simplifier();
+		ConstanteQ tmp1 = (ConstanteQ)tmp;
+		if (denum != tmp1.denum)
+			return false;
+		if (num != tmp1.num)
+			return false;
+		return true;
+	}
+
+	@Override
+	public ExpressionArithmetique deriver() {
+		return new ConstanteN(0);
+	}
+	
+	@Override
+	public ExpressionArithmetique deriver(int n) {
+		return new ConstanteN(0);
+	}
 }

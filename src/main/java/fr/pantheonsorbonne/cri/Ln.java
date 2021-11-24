@@ -30,4 +30,17 @@ public class Ln extends OpUnaire {
 		return Math.log(this.value.calculer());
 	}
 
+	@Override
+	public ExpressionArithmetique deriver() {
+		return new Division(this.value.deriver().simplifier(), this.value);
+	}
+	
+	@Override
+	public ExpressionArithmetique deriver(int n) {
+		ExpressionArithmetique tmp = this.simplifier();
+		for(int i = 0; i < n; i++)
+			tmp = tmp.deriver();
+		return tmp;
+	}
+
 }

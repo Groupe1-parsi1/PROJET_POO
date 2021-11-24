@@ -13,11 +13,11 @@ class testValeurRemarquable {
 		
 		ExpressionArithmetique ln = new Ln(new ConstanteN(1));
 		ExpressionArithmetique addition = new Addition(new ConstanteN(1), ln);
-		assertEquals(addition.simplifier().toString(), "1");
+		assertEquals("1",addition.simplifier().toString(), "1");
 		
 		ExpressionArithmetique exp = new Exponentielle(new ConstanteN(0));
 		ExpressionArithmetique addition1 = new Addition(new ConstanteN(1), exp);
-		assertEquals(addition1.simplifier().toString(), "2");
+		assertEquals( "2",addition1.simplifier().toString());
 		
 	 	ConstanteSymbolique pi = new ConstanteSymbolique(ConstantesSymboliqueConnues.PI);
 	 	ExpressionArithmetique division = new Division(pi, new ConstanteN(2));
@@ -26,7 +26,7 @@ class testValeurRemarquable {
 		assertEquals(2, addition2.calculer(),1e-0);
 		 
 		ExpressionArithmetique sqrt = new Sqrt(new ConstanteN(4));
-		assertEquals(sqrt.simplifier().toString(), "2");
+		assertEquals("2",sqrt.simplifier().toString());
 		
 	} 
 }

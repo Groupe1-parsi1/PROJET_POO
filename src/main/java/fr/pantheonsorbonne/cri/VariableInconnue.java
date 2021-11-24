@@ -2,8 +2,8 @@ package fr.pantheonsorbonne.cri;
 
 public class VariableInconnue extends ConstanteExpressionArithmetique {
 
-	public char symbole;
-	public ExpressionArithmetique valeur = null;
+	protected char symbole;
+	protected ExpressionArithmetique valeur = null;
 
 	public VariableInconnue(char symbole) {
 		this.symbole = symbole;
@@ -34,8 +34,35 @@ public class VariableInconnue extends ConstanteExpressionArithmetique {
 	}
 
 	@Override
-	public double calculer() {
-		throw new RuntimeException("Erreur");
+	public boolean equals(Object ea) {
+		if (this == ea)
+			return true;
+		if (ea == null)
+			return false;
+		if ((this.getClass() != ea.getClass()))
+			return false;
+		VariableInconnue x = (VariableInconnue) ea;
+		if (this.symbole == x.symbole)
+			return true;
+		return false;
 	}
 
+	@Override
+	public double calculer() {
+		return 0.0;
+	}
+
+	@Override
+	public ExpressionArithmetique deriver() {
+
+		return new ConstanteN(1);
+	}
+
+	@Override
+	public ExpressionArithmetique deriver(int n) {
+		ExpressionArithmetique tmp = this.simplifier();
+		for (int i = 0; i < n; i++)
+			tmp = tmp.deriver();
+		return tmp;
+	}
 }
