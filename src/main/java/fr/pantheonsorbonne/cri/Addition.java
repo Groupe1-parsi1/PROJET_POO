@@ -51,6 +51,9 @@ public class Addition extends OpBinaire {
     		if(ex2.value == 0) {
     			return ex1;
     		}
+//    	}else {
+//    		if(ex2.value == 0)
+//    			return ex1.simplifier();
     	}
     	return this;
     	
@@ -85,11 +88,15 @@ public class Addition extends OpBinaire {
     		else if (tmp.left instanceof ConstanteQ)
     			return new Addition(tmp.right, new Addition(tmp.left, ex1).simplifier());
     	}
-    	else if(ex2 instanceof VariableInconnue) {
+    	if(ex2 instanceof VariableInconnue) {
     		if(ex1.value == 0) {
-    			return ex2;
+    			return ex2.simplifier();
     		}
     	}
+//    	else{
+//    		if(ex1.value == 0)
+//    			return ex2.simplifier();
+//    	}
     	return this;
     }
     
@@ -225,6 +232,12 @@ public class Addition extends OpBinaire {
 	
 	private static VariableInconnue getVariableSymbolique(Puissance puiss) {
 		return (new VariableInconnue(puiss.left.toString()));
-}
+	}
+	
+	public static void main(String[] args) {
+		ConstanteN un = new ConstanteN(1);
+		VariableInconnue x = new VariableInconnue("x");
+		
+	}
 	
 }
