@@ -1,11 +1,11 @@
 package fr.pantheonsorbonne.cri;
 
-public class Somme implements ExpressionArithmetique {
+public class Produit implements ExpressionArithmetique {
 	private ExpressionArithmetique ea;
 	private int inf;
 	private int sup;
 
-	public Somme(ExpressionArithmetique ea, int inf, int sup) {
+	public Produit(ExpressionArithmetique ea, int inf, int sup) {
 		this.ea = ea;
 		this.inf = inf;
 		this.sup = sup;
@@ -25,22 +25,13 @@ public class Somme implements ExpressionArithmetique {
 					ConstanteN cst = new ConstanteN(i);
 					VariableIndex varInd = new VariableIndex('α', cst);
 					ExpressionArithmetique multi = new Multiplication(varInd, new Puissance(pui.left, cst));
-					res = new Addition(res, multi);
+					res = new Multiplication(res, multi);
 
 				}
 			}
 
 		}
 		return res;
-	}
-
-//	public ExpressionArithmetique supporter() {
-//		return 
-//	}
-
-	@Override
-	public double calculer() {
-		throw new RuntimeException("Erreur");
 	}
 
 	@Override
@@ -58,13 +49,9 @@ public class Somme implements ExpressionArithmetique {
 		throw new RuntimeException("Erreur");
 	}
 
-//	public static void main(String[] args) {
-//		ExpressionArithmetique i = new VariableInconnue('i');
-//		ExpressionArithmetique x = new VariableInconnue('x');
-//		VariableIndex varin = new VariableIndex('a', i);
-//		ExpressionArithmetique ex = new Multiplication(varin, x);
-//		System.out.println(ex.toString());
-//
-//	}
+	@Override
+	public double calculer() {
+		throw new RuntimeException("Erreur");
+	}
 
 }
