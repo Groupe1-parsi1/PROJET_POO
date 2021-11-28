@@ -6,7 +6,7 @@ import java.beans.Expression;
 
 import org.junit.jupiter.api.Test;
 
-class testAfficheExpression {
+class TestAfficheExpression {
 
 	@Test
 	void test() {

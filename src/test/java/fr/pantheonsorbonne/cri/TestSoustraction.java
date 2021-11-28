@@ -8,7 +8,7 @@ import fr.pantheonsorbonne.cri.ConstanteQ;
 import fr.pantheonsorbonne.cri.ExpressionArithmetique;
 import fr.pantheonsorbonne.cri.Soustraction;
 
-class testSoustraction {
+class TestSoustraction {
 
 	@Test
 	void test() {

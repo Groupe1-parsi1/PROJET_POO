@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-class testAffecterVariableSymbolique {
+class TestAffecterVariableSymbolique {
 
 	@Test
 	void test1() {

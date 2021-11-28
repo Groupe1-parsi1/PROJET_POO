@@ -47,13 +47,8 @@ public class Addition extends OpBinaire {
     		else if( tmp.right instanceof ConstanteQ)
     			 return new Addition(tmp.left, new Addition(ex2, tmp.right).simplifier());
     	}
-    	else if(ex1 instanceof VariableInconnue) {
-    		if(ex2.value == 0) {
-    			return ex1;
-    		}
-//    	}else {
-//    		if(ex2.value == 0)
-//    			return ex1.simplifier();
+    	else if(ex1 instanceof VariableInconnue && ex2.value == 0) {
+    		return ex1;
     	}
     	return this;
     	
@@ -88,15 +83,9 @@ public class Addition extends OpBinaire {
     		else if (tmp.left instanceof ConstanteQ)
     			return new Addition(tmp.right, new Addition(tmp.left, ex1).simplifier());
     	}
-    	if(ex2 instanceof VariableInconnue) {
-    		if(ex1.value == 0) {
-    			return ex2.simplifier();
-    		}
+    	if(ex2 instanceof VariableInconnue && ex1.value == 0) {
+    		return ex2.simplifier();
     	}
-//    	else{
-//    		if(ex1.value == 0)
-//    			return ex2.simplifier();
-//    	}
     	return this;
     }
     

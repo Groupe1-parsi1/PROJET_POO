@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import fr.pantheonsorbonne.cri.ConstanteSymbolique.ConstantesSymboliqueConnues;
 
-class testCos {
+class TestCos {
 
 	@Test
 	void test() {

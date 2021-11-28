@@ -8,8 +8,8 @@ public class Puissance extends OpBinaire {
 
 	@Override
 	protected ExpressionArithmetique simplifier(ConstanteN valLeft, ConstanteN valRight) {
-		double left = (double) valLeft.value;
-		double right = (double) valRight.value;
+		double left = valLeft.value;
+		double right = valRight.value;
 		double res = Math.pow(left, right);
 		long resultat = (long) res;
 		return new ConstanteN(resultat);

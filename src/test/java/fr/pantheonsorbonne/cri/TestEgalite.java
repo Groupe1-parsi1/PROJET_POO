@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class testEgalite {
+class TestEgalite {
 
 	@Test
 	void test() {
@@ -18,8 +18,7 @@ class testEgalite {
 	     VariableInconnue y = new VariableInconnue("x");
 	     
 	     assertEquals(x, y);
-	     assertEquals(x, x);
-	
+	    
 	     assertNotEquals(n1, q1);
 	    
 	     assertNotEquals(null,n1);  
@@ -41,10 +40,10 @@ class testEgalite {
 	     assertEquals(n1, n11);
 	   
 	     assertNotEquals(ex31, n1);
-	     assertNotEquals(ex31, null);
-	     assertNotEquals(ex31, n1);
-	    
+	     assertNotEquals(null,ex31);
 	     
+	     assertEquals(n1.hashCode(), n11.hashCode());
+	     assertNotEquals(ex31.hashCode(), n1.hashCode());
 	     
 	     
 	     ConstanteQ cst1 = new ConstanteQ(1, 2);
@@ -58,7 +57,7 @@ class testEgalite {
 	   
 	     assertNotEquals(x, cst1);
 	   
-	     assertNotEquals(x, null);
+	     assertNotEquals(null,x);
 	     
 	     ExpressionArithmetique exUni = new Sqrt(n1);
 	     ExpressionArithmetique exUni1 = new Sqrt(n11);
@@ -69,6 +68,9 @@ class testEgalite {
 	     assertNotEquals(null,exUni);
 	
 	     assertNotEquals(exUni, exUni2);
+	     
+	     assertEquals(exUni1.hashCode(), exUni1.hashCode());
+	     assertNotEquals(exUni1.hashCode(), exUni2.hashCode());
 	     
 	    
 	}

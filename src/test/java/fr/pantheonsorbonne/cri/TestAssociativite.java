@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-class testAssociativite {
+class TestAssociativite {
 	@Test
 	void testAssociativiteAddition() {
 		ConstanteN cst = new ConstanteN(2);

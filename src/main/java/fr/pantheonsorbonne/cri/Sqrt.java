@@ -12,7 +12,7 @@ public class Sqrt extends OpUnaire {
 		if(valeur instanceof ConstanteN) {
 			ConstanteN tmp = (ConstanteN) valeur;
 			long val;
-			if(check_square_num(tmp.getValue())) {
+			if(checkSquareNum(tmp.getValue())) {
 				val = (long)Math.sqrt(tmp.value);
 				return new ConstanteN(val);
 			}
@@ -21,7 +21,7 @@ public class Sqrt extends OpUnaire {
 			ConstanteQ tmp = (ConstanteQ) valeur;
 			long num = tmp.getNum();
 			long denum = tmp.getDenum();
-			if(check_square_num(num) && check_square_num(denum)) {
+			if(checkSquareNum(num) && checkSquareNum(denum)) {
 				long valNum = (long)Math.sqrt(num);
 				long valDenum = (long)Math.sqrt(denum);
 				return new ConstanteQ(valNum, valDenum);
@@ -30,11 +30,9 @@ public class Sqrt extends OpUnaire {
 		return new Sqrt(valeur); 
 	}
 	
-	public static boolean check_square_num(long nb) {
+	public static boolean checkSquareNum(long nb) {
 		long tmp = (long)Math.sqrt(nb);
-		if(tmp*tmp == nb)
-			return true;
-		return false;
+		return tmp*tmp == nb;
 	}
 	
 	@Override

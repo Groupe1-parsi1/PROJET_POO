@@ -53,20 +53,30 @@ public abstract class OpBinaire implements ExpressionArithmetique {
 		return simplifier(toN(this.right), toQ(this.left));
 	}
 	
-	abstract protected ExpressionArithmetique simplifier(ConstanteN valLeft, ConstanteN valRight);
+	protected abstract ExpressionArithmetique simplifier(ConstanteN valLeft, ConstanteN valRight);
 
-	abstract protected ExpressionArithmetique simplifier(ConstanteQ valLeft, ConstanteQ valRight);
+	protected abstract ExpressionArithmetique simplifier(ConstanteQ valLeft, ConstanteQ valRight);
 
 	protected ExpressionArithmetique simplifier(ConstanteN valLeft, ConstanteQ valRight) {
 		return simplifier(new ConstanteQ(valLeft.value, 1), valRight); 
 	}
 	
 	
-	abstract protected ExpressionArithmetique simplifier(ExpressionArithmetique valLeft, ConstanteN valRight);
-	abstract protected ExpressionArithmetique simplifier(ExpressionArithmetique valLeft, ConstanteQ valRight);
-	abstract protected ExpressionArithmetique simplifier(ConstanteN valLeft, ExpressionArithmetique valRight);
-	abstract protected ExpressionArithmetique simplifier(ConstanteQ valLeft, ExpressionArithmetique valRight);
+	protected abstract ExpressionArithmetique simplifier(ExpressionArithmetique valLeft, ConstanteN valRight);
+	protected abstract ExpressionArithmetique simplifier(ExpressionArithmetique valLeft, ConstanteQ valRight);
+	protected abstract ExpressionArithmetique simplifier(ConstanteN valLeft, ExpressionArithmetique valRight);
+	protected abstract ExpressionArithmetique simplifier(ConstanteQ valLeft, ExpressionArithmetique valRight);
 
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((left == null) ? 0 : left.hashCode());
+		result = prime * result + ((right == null) ? 0 : right.hashCode());
+		result = prime * result + ((symbol == null) ? 0 : symbol.hashCode());
+		return result;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -77,27 +87,17 @@ public abstract class OpBinaire implements ExpressionArithmetique {
 		if (getClass() != obj.getClass())
 			return false;
 		OpBinaire other = (OpBinaire) obj;
-		
-		if (left == null) {
-			if (other.left != null)
-				return false;
-			else if (!left.equals(other.left))
-				return false;
-		}
-		if (right == null) {
-			if (other.right != null)
-				return false;
-			else if (!right.equals(other.right))
-				return false;
-		}
-		if (symbol == null) {
-			if (other.symbol != null)
-				return false;
-			else if (!symbol.equals(other.symbol))
-				return false;
-		}
-		return true;
-		
+		if(this.left.simplifier().equals(other.left.simplifier()) && 
+				this.right.simplifier().equals(other.right.simplifier()) && 
+				this.symbol.equals(other.symbol)) {
+					return true;
+		}else if(this.right.simplifier().equals(other.left.simplifier()) &&
+				this.left.simplifier().equals(other.right.simplifier())&&
+				this.symbol.equals(other.symbol))
+					return true;
+		return false;
 	}	
+	
+	
 }
  

@@ -1,6 +1,6 @@
 package fr.pantheonsorbonne.cri;
 
-abstract public class ConstanteExpressionArithmetique implements ExpressionArithmetique {
+public abstract class ConstanteExpressionArithmetique implements ExpressionArithmetique {
 
     @Override
     public ExpressionArithmetique simplifier() {
