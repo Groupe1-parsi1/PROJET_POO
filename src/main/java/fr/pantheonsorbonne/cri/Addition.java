@@ -234,10 +234,4 @@ public class Addition extends OpBinaire {
 		return (new VariableInconnue(puiss.left.toString()));
 	}
 	
-	public static void main(String[] args) {
-		ConstanteN un = new ConstanteN(1);
-		VariableInconnue x = new VariableInconnue("x");
-		
-	}
-	
 }

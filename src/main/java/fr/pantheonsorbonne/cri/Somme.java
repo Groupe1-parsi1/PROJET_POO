@@ -20,7 +20,6 @@ public class Somme implements ExpressionArithmetique {
 			Multiplication tmp = (Multiplication) ea;
 			if (tmp.left instanceof VariableIndex && tmp.right instanceof Puissance) {
 				Puissance pui = (Puissance) tmp.right;
-				//res = new Addition(new ConstanteN(1), pui.left);
 				for (long i = inf; i <= sup; i++) {
 					ConstanteN cst = new ConstanteN(i);
 					VariableIndex varInd = new VariableIndex("α", cst);
