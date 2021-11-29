@@ -16,6 +16,15 @@ public abstract class OpUnaire implements ExpressionArithmetique {
     }
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((operationName == null) ? 0 : operationName.hashCode());
+		result = prime * result + ((value == null) ? 0 : value.hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -24,6 +33,8 @@ public abstract class OpUnaire implements ExpressionArithmetique {
 		if (getClass() != obj.getClass())
 			return false;
 		OpUnaire other = (OpUnaire) obj;
+//		return (this.operationName.equals(other.operationName) && 
+//				this.value.simplifier().equals(other.value.simplifier()));
 		if (operationName == null) {
 			if (other.operationName != null)
 				return false;

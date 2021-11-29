@@ -1,46 +1,51 @@
 package fr.pantheonsorbonne.cri;
 
 public class Somme implements ExpressionArithmetique {
-	private ExpressionArithmetique ea;
-	private int inf;
-	private int sup;
 
-	public Somme(ExpressionArithmetique ea, int inf, int sup) {
+	private ExpressionArithmetique ea;
+	private long inf;
+	private long sup;
+
+	public Somme(ExpressionArithmetique ea, long inf, long sup) {
 		this.ea = ea;
 		this.inf = inf;
 		this.sup = sup;
 	}
-
+	
 	@Override
 	public ExpressionArithmetique simplifier() {
 		ExpressionArithmetique res;
-		res = null;
+		res = new ConstanteN(0);
 		if (ea instanceof Multiplication) {
 			Multiplication tmp = (Multiplication) ea;
 			if (tmp.left instanceof VariableIndex && tmp.right instanceof Puissance) {
-				VariableIndex var = (VariableIndex) tmp.left;
 				Puissance pui = (Puissance) tmp.right;
-				res = new Addition(new ConstanteN(1), pui.left);
-				for (int i = inf; i <= sup; i++) {
+				for (long i = inf; i <= sup; i++) {
 					ConstanteN cst = new ConstanteN(i);
-					VariableIndex varInd = new VariableIndex('α', cst);
-					ExpressionArithmetique multi = new Multiplication(varInd, new Puissance(pui.left, cst));
+					VariableIndex varInd = new VariableIndex("α", cst);
+					ExpressionArithmetique multi = new Multiplication(varInd, new Puissance(pui.left, cst)).simplifier();
 					res = new Addition(res, multi);
 
 				}
 			}
-
+		}else if(ea instanceof VariableIndex) {
+			VariableIndex varTmp = (VariableIndex) ea;
+			if(varTmp.symbole == null) {
+				{	
+					for(long i = inf; i <= sup; i++) {
+						ConstanteN tmp = new ConstanteN(i);
+						res = new Addition(res, tmp).simplifier();
+					}
+				}
+			}
 		}
 		return res;
 	}
 
-//	public ExpressionArithmetique supporter() {
-//		return 
-//	}
 
 	@Override
 	public double calculer() {
-		throw new RuntimeException("Erreur");
+		throw new IllegalArgumentException("Erreur");
 	}
 
 	@Override
@@ -48,23 +53,15 @@ public class Somme implements ExpressionArithmetique {
 		return this.ea.simplifier().toString();
 	}
 
+
 	@Override
 	public ExpressionArithmetique deriver() {
-		throw new RuntimeException("Erreur");
+		return null;
 	}
-
+	
 	@Override
 	public ExpressionArithmetique deriver(int n) {
-		throw new RuntimeException("Erreur");
+		return null;
 	}
-
-//	public static void main(String[] args) {
-//		ExpressionArithmetique i = new VariableInconnue('i');
-//		ExpressionArithmetique x = new VariableInconnue('x');
-//		VariableIndex varin = new VariableIndex('a', i);
-//		ExpressionArithmetique ex = new Multiplication(varin, x);
-//		System.out.println(ex.toString());
-//
-//	}
-
 }
+

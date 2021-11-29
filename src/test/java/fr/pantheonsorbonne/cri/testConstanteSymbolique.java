@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
- class testConstanteSymbolique {
+ class TestConstanteSymbolique {
 
     @Test
     void test() {

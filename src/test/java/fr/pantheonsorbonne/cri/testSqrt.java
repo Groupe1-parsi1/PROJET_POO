@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class testSqrt {
+class TestSqrt {
 
 	@Test
 	void test() {
@@ -28,7 +28,7 @@ class testSqrt {
 		assertEquals("(sqrt((10/12)))",scst4.toString());
 		assertEquals("(sqrt((5/6)))",scst4.simplifier().toString());
 		
-		VariableInconnue var = new VariableInconnue('x');
+		VariableInconnue var = new VariableInconnue("x");
 		ExpressionArithmetique svar = new Sqrt(var);
 		assertEquals( "(sqrt(x))",svar.toString());
 		assertEquals("(sqrt(x))",svar.simplifier().toString());
@@ -40,7 +40,7 @@ class testSqrt {
 	void testDerivation() {
 		ConstanteN cst = new ConstanteN(3);
 		ConstanteQ cstq = new ConstanteQ(3, 5);
-		VariableInconnue x = new VariableInconnue('x');
+		VariableInconnue x = new VariableInconnue("x");
 		
 		ExpressionArithmetique mul = new Multiplication(cst, x);
 		

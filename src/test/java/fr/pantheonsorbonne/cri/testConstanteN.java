@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import fr.pantheonsorbonne.cri.ConstanteN;
 
- class testConstanteN {
+ class TestConstanteN {
 
 	@Test
 	 void test() {

@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class testAddition {
+class TestAddition {
 
 	@Test 
 	void test() {
@@ -33,7 +33,7 @@ class testAddition {
 		//TEST Q5
 		 ConstanteN cst1 = new ConstanteN(10);
 		 ConstanteQ cst2 = new ConstanteQ(1, 2);
-		 VariableInconnue cst3 = new VariableInconnue('x');
+		 VariableInconnue cst3 = new VariableInconnue("x");
 		 
 		 ExpressionArithmetique add1 = new Addition(cst1, cst2);
 		 ExpressionArithmetique add2 = new Addition(add1, cst3);

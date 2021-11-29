@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import fr.pantheonsorbonne.cri.ConstanteSymbolique.ConstantesSymboliqueConnues;
 
-class testCos {
+class TestCos {
 
 	@Test
 	void test() {
@@ -78,7 +78,7 @@ class testCos {
     	assertEquals( "(cos(e))",cosEx.toString());
 		assertEquals( "(cos(e))",cosEx.simplifier().toString());	
 		
-		VariableInconnue x = new VariableInconnue('y');
+		VariableInconnue x = new VariableInconnue("y");
     	ExpressionArithmetique cosVa = new Cos(x);
     	assertEquals("(cos(y))",cosVa.toString());
     	assertEquals("(cos(y))",cosVa.simplifier().toString());

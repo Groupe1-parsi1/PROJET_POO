@@ -153,4 +153,31 @@ public class Multiplication extends OpBinaire {
 		}
 		return this;
 	}
+	
+	protected ExpressionArithmetique distribuer1(ExpressionArithmetique gauche, Addition droite) {
+		ExpressionArithmetique mLeft = new Multiplication(gauche, droite.left).simplifier();
+		ExpressionArithmetique mRight = new Multiplication(gauche, droite.right).simplifier();
+		return new Addition(mLeft, mRight).simplifier();
+	}
+	
+
+	protected ExpressionArithmetique distribuer2(Addition gauche, ExpressionArithmetique droite) {
+		ExpressionArithmetique mLeft = new Multiplication(gauche.left, droite).simplifier();
+		ExpressionArithmetique mRight = new Multiplication(gauche.right, droite).simplifier();
+		return new Addition(mLeft, mRight).simplifier();
+	}
+	
+
+	protected ExpressionArithmetique distribuer3(ExpressionArithmetique gauche, Soustraction droite) {
+		ExpressionArithmetique mLeft = new Multiplication(gauche, droite.left).simplifier();
+		ExpressionArithmetique mRight = new Multiplication(gauche, droite.right).simplifier();
+		return new Soustraction(mLeft, mRight).simplifier();
+	}
+	
+
+	protected ExpressionArithmetique distribuer4(Soustraction gauche, ExpressionArithmetique droite) {
+		ExpressionArithmetique mLeft = new Multiplication(gauche.left, droite).simplifier();
+		ExpressionArithmetique mRight = new Multiplication(gauche.right, droite).simplifier();
+		return new Soustraction(mLeft, mRight).simplifier();
+	}
 }

@@ -8,7 +8,7 @@ import fr.pantheonsorbonne.cri.ConstanteQ;
 import fr.pantheonsorbonne.cri.ExpressionArithmetique;
 import fr.pantheonsorbonne.cri.Soustraction;
 
-class testSoustraction {
+class TestSoustraction {
 
 	@Test
 	void test() {
@@ -42,7 +42,7 @@ class testSoustraction {
     	//test q5
     	 ConstanteN sous1 = new ConstanteN(10);
 		 ConstanteQ sous2 = new ConstanteQ(1, 2);
-		 VariableInconnue sous3a = new VariableInconnue('x');
+		 VariableInconnue sous3a = new VariableInconnue("x");
 		 
 		 ExpressionArithmetique s1 = new Addition(sous1, sous2);
 		 ExpressionArithmetique s2 = new Soustraction(s1, sous3a);

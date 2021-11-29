@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class testEgalite {
+class TestEgalite {
 
 	@Test
 	void test() {
@@ -14,15 +14,14 @@ class testEgalite {
 	     ConstanteN n3 = new ConstanteN(5);
 	     ConstanteQ q1 = new ConstanteQ(2, 4);
 	     ConstanteQ q2 = new ConstanteQ(1, 2);
-	     VariableInconnue x = new VariableInconnue('x');
-	     VariableInconnue y = new VariableInconnue('x');
+	     VariableInconnue x = new VariableInconnue("x");
+	     VariableInconnue y = new VariableInconnue("x");
 	     
-	     assertTrue(x.equals(y));
-	     assertTrue(x.equals(x));
-	     
-	     assertFalse(n1.equals(q1));
-	     assertFalse(n1.equals(null));
-	     
+	     assertEquals(x, y);
+	    
+	     assertNotEquals(n1, q1);
+	    
+	     assertNotEquals(null,n1);  
 	     
 	     ExpressionArithmetique ex3 = new Addition(q1, x); 
 	     ExpressionArithmetique ex5 = new Addition(q2, x);
@@ -32,16 +31,19 @@ class testEgalite {
 	     
 	     ExpressionArithmetique ex31 = new Addition(new Addition(n1, n2), x);
 	     ExpressionArithmetique ex41 = new Addition(n3, x); 
+
+	     assertEquals(ex31, ex41);
+	
+	     assertEquals(ex3, ex5);
+	     assertEquals(ex4, ex6);
+	
+	     assertEquals(n1, n11);
+	   
+	     assertNotEquals(ex31, n1);
+	     assertNotEquals(null,ex31);
 	     
-	     assertTrue(ex31.equals(ex41));
-	     assertTrue(ex3.equals(ex5));
-	     assertTrue(ex4.equals(ex6));
-	     assertTrue(n1.equals(n11));
-	     
-	     assertFalse(ex31.equals(n1));
-	     assertFalse(ex31.equals(null));
-	    
-	     
+	     assertEquals(n1.hashCode(), n11.hashCode());
+	     assertNotEquals(ex31.hashCode(), n1.hashCode());
 	     
 	     
 	     ConstanteQ cst1 = new ConstanteQ(1, 2);
@@ -49,22 +51,29 @@ class testEgalite {
 	     ConstanteN cst3 = new ConstanteN(3);
 	     ExpressionArithmetique ex1 = new Cos(cst1); 
 	     ExpressionArithmetique ex2 = new Cos(cst2);
-	     assertTrue(ex1.equals(ex2)); 
-	     assertFalse(ex1.equals(cst3));
-	     
-	     assertFalse(x.equals(cst1));
-	     assertFalse(x.equals(null));
+	    
+	     assertEquals(ex1, ex2);	    
+	     assertNotEquals(ex1, cst3);
+	   
+	     assertNotEquals(x, cst1);
+	   
+	     assertNotEquals(null,x);
 	     
 	     ExpressionArithmetique exUni = new Sqrt(n1);
 	     ExpressionArithmetique exUni1 = new Sqrt(n11);
 	     ExpressionArithmetique exUni2 = new Sqrt(q1);
 	     
-	     assertTrue(exUni.equals(exUni1));
+	     assertEquals(exUni, exUni1);
+	 
+	     assertNotEquals(null,exUni);
+	
+	     assertNotEquals(exUni, exUni2);
 	     
-	     assertFalse(exUni.equals(null));
-	     assertFalse(exUni.equals(exUni2));
+	     assertEquals(exUni1.hashCode(), exUni1.hashCode());
+	     assertNotEquals(exUni1.hashCode(), exUni2.hashCode());
 	     
 	    
 	}
+
 
 }

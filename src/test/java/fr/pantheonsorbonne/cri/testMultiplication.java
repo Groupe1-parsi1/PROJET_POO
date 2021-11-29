@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class testMultiplication {
+class TestMultiplication {
 
 	@Test
 	void test1() {
@@ -48,7 +48,7 @@ class testMultiplication {
 		ConstanteN cst = new ConstanteN(3);
 		
 		ConstanteQ cstq = new ConstanteQ(3, 7);
-		VariableInconnue x = new VariableInconnue('x');
+		VariableInconnue x = new VariableInconnue("x");
 		
 		ExpressionArithmetique ex = new Multiplication(cst, x);
 		ExpressionArithmetique mul = new Multiplication(x, cst);

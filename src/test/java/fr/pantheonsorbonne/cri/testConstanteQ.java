@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 
 
- class testConstanteQ {
+ class TestConstanteQ {
 
 	@Test
 	void test() {
@@ -24,11 +24,11 @@ import org.junit.jupiter.api.Test;
 		ConstanteQ  cons2 = new ConstanteQ(1, 3);
 		assertEquals("(1/3)",cons2.simplifier().toString());
 		
-		assertFalse(cons.equals(cons2));
+		assertNotEquals(cons,cons2);
 		
 		ConstanteQ cst1 = new ConstanteQ(1, 2);
 		ConstanteQ cst2 = new ConstanteQ(4, 8);
-		assertTrue(cst1.equals(cst2));
+		assertEquals(cst1,cst2);
 	}
 
 }

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class testDerivation {
+class TestDerivation {
 
 	@Test
 	void test() {
@@ -14,7 +14,7 @@ class testDerivation {
 		ConstanteQ cstQ = new ConstanteQ(-2, 3);
 		assertEquals("0", cstN1.deriver().toString());
 		
-		VariableInconnue x = new VariableInconnue('x');
+		VariableInconnue x = new VariableInconnue("x");
 		ExpressionArithmetique exSom = new Addition(cstN1, x);
 		assertEquals("1", x.deriver().toString());
 		assertEquals("1", exSom.deriver().toString());
@@ -80,7 +80,7 @@ class testDerivation {
 		ConstanteN cst2 = new ConstanteN(4);
 		ConstanteN cst = new ConstanteN(2);
 		
-		VariableInconnue x = new VariableInconnue('x');
+		VariableInconnue x = new VariableInconnue("x");
 		
 		assertEquals("0", x.deriver(3).toString());
 		
@@ -126,7 +126,7 @@ class testDerivation {
 		ConstanteN cinq = new ConstanteN(5);
 		ConstanteN dix = new ConstanteN(10);
 		
-		VariableInconnue x = new VariableInconnue('x');
+		VariableInconnue x = new VariableInconnue("x");
 		
 		ExpressionArithmetique mul1 = new Multiplication(cinq, new Puissance(x, quatre));
 		ExpressionArithmetique mul2 = new Multiplication(quatre, new Puissance(x, trois));

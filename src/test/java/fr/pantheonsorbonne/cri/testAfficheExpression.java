@@ -6,7 +6,7 @@ import java.beans.Expression;
 
 import org.junit.jupiter.api.Test;
 
-class testAfficheExpression {
+class TestAfficheExpression {
 
 	@Test
 	void test() {
@@ -19,8 +19,8 @@ class testAfficheExpression {
 		ConstanteQ cst6 = new ConstanteQ(10, 2);
 		ConstanteQ cst7 = new ConstanteQ(10, 6);
 		
-		VariableInconnue var1 = new VariableInconnue('x');
-		VariableInconnue var2 = new VariableInconnue('y');
+		VariableInconnue var1 = new VariableInconnue("x");
+		VariableInconnue var2 = new VariableInconnue("y");
 		
 		ExpressionArithmetique puiss1 = new Puissance(var1, cst3);
 		ExpressionArithmetique divi1 = new Division(cst4, var1);

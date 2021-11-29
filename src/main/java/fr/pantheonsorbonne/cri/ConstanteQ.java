@@ -52,6 +52,15 @@ public class ConstanteQ extends ConstanteExpressionArithmetique {
 		}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (denum ^ (denum >>> 32));
+		result = prime * result + (int) (num ^ (num >>> 32));
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -60,13 +69,9 @@ public class ConstanteQ extends ConstanteExpressionArithmetique {
 		if (getClass() != obj.getClass())
 			return false;
 		ConstanteQ other = (ConstanteQ) obj;
-		ExpressionArithmetique tmp = other.simplifier();
-		ConstanteQ tmp1 = (ConstanteQ)tmp;
-		if (denum != tmp1.denum)
-			return false;
-		if (num != tmp1.num)
-			return false;
-		return true;
+		ConstanteQ cstOtherSimp = (ConstanteQ) other.simplifier();
+		ConstanteQ thisSimp = (ConstanteQ) this.simplifier();
+		return (thisSimp.denum == cstOtherSimp.denum && thisSimp.num == cstOtherSimp.num) ;
 	}
 
 	@Override
