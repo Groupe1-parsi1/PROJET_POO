@@ -39,6 +39,7 @@ class TestSoustraction {
     	assertEquals("(5-(5/2))",sous4.toString());
     	assertEquals("(5/2)",sous4.simplifier().toString());
     	
+    	
     	//test q5
     	 ConstanteN sous1 = new ConstanteN(10);
 		 ConstanteQ sous2 = new ConstanteQ(1, 2);

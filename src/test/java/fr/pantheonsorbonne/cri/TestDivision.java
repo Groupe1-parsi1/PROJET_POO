@@ -12,6 +12,21 @@ class TestDivision {
 		ConstanteN cs2 = new ConstanteN(2);
 		ConstanteQ cs3 = new ConstanteQ(2, 3);
 		ConstanteQ cs4 = new ConstanteQ(-4, 5);
+		ConstanteN zero = new ConstanteN(0);
+		VariableInconnue x = new VariableInconnue("x");
+		ConstanteQ cstq = new ConstanteQ(0, 3);
+		
+		ExpressionArithmetique di = new Division(zero, cs1);
+		assertEquals("0", di.simplifier().toString());
+	
+		
+		
+		
+		ExpressionArithmetique ad = new Addition(x, cs2);
+		ExpressionArithmetique division = new Division(zero, ad);
+		ExpressionArithmetique division1 = new Division(cs3, ad);
+		assertEquals("0", division.simplifier().toString());
+		assertEquals("((2/3)/(x+2))", division1.simplifier().toString());
 		
 		ExpressionArithmetique div1 = new Division(cs1, cs2);
 		assertEquals("(12/2)",div1.toString());
@@ -37,7 +52,8 @@ class TestDivision {
 		ConstanteQ cst2 = new ConstanteQ(2, 1);
 		ExpressionArithmetique ex = new Division(cst2, cst1);
 		assertEquals("4",ex.simplifier().toString());
-
+	}
+	void testQ5() {
 		//test q5
 		
 		 ConstanteN sous1 = new ConstanteN(10);

@@ -19,8 +19,6 @@ class TestEgalite {
 	     
 	     assertEquals(x, y);
 	    
-	    // assertNotEquals(n1, q1);
-	    
 	     assertNotEquals(null,n1);  
 	     
 	     ExpressionArithmetique ex3 = new Addition(q1, x); 
@@ -55,7 +53,7 @@ class TestEgalite {
 	     assertEquals(ex1, ex2);	    
 	     assertNotEquals(ex1, cst3);
 	   
-	     //assertNotEquals(x, cst1);
+	   
 	   
 	     assertNotEquals(null,x);
 	     

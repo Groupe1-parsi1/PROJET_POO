@@ -7,6 +7,8 @@ public class Division extends OpBinaire {
 
 	@Override
 	protected ExpressionArithmetique simplifier(ConstanteN valLeft, ConstanteN valRight) {
+		if(valLeft.getValue() == 0)
+			return new ConstanteN(0);
 		return new ConstanteQ(valLeft.value, valRight.value).simplifier();
 	}
 
@@ -15,8 +17,6 @@ public class Division extends OpBinaire {
 		ConstanteQ cst = new ConstanteQ(valLeft.getValue() * valRight.getDenum(), valRight.getNum());
 		if (cst.getDenum() == 1)
 			return new ConstanteN(cst.getNum());
-		if (cst.getNum() == 0)
-			return new ConstanteN(0);
 		else
 			return new ConstanteQ(valLeft.getValue() * valRight.getDenum(), valRight.getNum()).simplifier();
 
@@ -24,13 +24,13 @@ public class Division extends OpBinaire {
 
 	@Override
 	protected ExpressionArithmetique simplifier(ConstanteQ valLeft, ConstanteN valRight) {
-
 		return new ConstanteQ(valLeft.getNum(), valLeft.getDenum() * valRight.getValue()).simplifier();
 
 	}
 
 	@Override
 	protected ExpressionArithmetique simplifier(ConstanteQ valLeft, ConstanteQ valRight) {
+		
 		return new ConstanteQ(valLeft.getNum() * valRight.getDenum(), valLeft.getDenum() * valRight.getNum())
 				.simplifier();
 	}
@@ -65,7 +65,7 @@ public class Division extends OpBinaire {
 	public ExpressionArithmetique deriver(int n) {
 		ExpressionArithmetique tmp = this.simplifier();
 		for(int i = 0; i < n; i++)
-			tmp = tmp.deriver();
+			tmp = tmp.deriver().simplifier();
 		return tmp;
 	}
 
@@ -73,8 +73,6 @@ public class Division extends OpBinaire {
 	protected ExpressionArithmetique simplifier(ExpressionArithmetique valLeft, ConstanteN valRight) {
 		if(valRight.value == 1)
 			return valLeft;
-		else if(valRight.value == 0)
-			return null;
 		return this;
 	}
 
@@ -85,7 +83,8 @@ public class Division extends OpBinaire {
 
 	@Override
 	protected ExpressionArithmetique simplifier(ConstanteN valLeft, ExpressionArithmetique valRight) {
-
+		if (valLeft.value == 0)
+			return new ConstanteN(0);
 		return this;
 	}
 
@@ -93,5 +92,5 @@ public class Division extends OpBinaire {
 	protected ExpressionArithmetique simplifier(ConstanteQ valLeft, ExpressionArithmetique valRight) {
 		return this;
 	}
-
+	
 }

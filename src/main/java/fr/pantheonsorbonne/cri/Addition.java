@@ -49,6 +49,12 @@ public class Addition extends OpBinaire {
     	}
     	else if(ex1 instanceof VariableInconnue && ex2.value == 0) {
     		return ex1;
+    	}else if (ex1 instanceof Soustraction) {
+    		Soustraction tmp = (Soustraction) ex1.simplifier();
+    		if(tmp.right instanceof ConstanteN || tmp.right instanceof ConstanteQ)
+    			return new Addition(tmp.left, new Soustraction(ex2, tmp.right)).simplifier();
+    		else if(tmp.left instanceof ConstanteN || tmp.right instanceof ConstanteQ)
+    			return new Soustraction(new Addition(tmp.left, ex2), tmp.right).simplifier();
     	}
     	return this;
     	
@@ -66,6 +72,12 @@ public class Addition extends OpBinaire {
     			return new Addition(tmp.left, new Addition(tmp.right, ex2).simplifier());
     		else if (tmp.right instanceof ConstanteQ)
     			return new Addition(tmp.left, new Addition(tmp.right, ex2).simplifier());
+    	}else if (ex1 instanceof Soustraction) {
+    		Soustraction tmp = (Soustraction) ex1.simplifier();
+    		if(tmp.right instanceof ConstanteN || tmp.right instanceof ConstanteQ)
+    			return new Addition(tmp.left, new Soustraction(ex2, tmp.right)).simplifier();
+    		else if(tmp.left instanceof ConstanteN || tmp.right instanceof ConstanteQ)
+    			return new Soustraction(new Addition(tmp.left, ex2), tmp.right).simplifier();
     	}
     		return this;
     }
@@ -83,8 +95,14 @@ public class Addition extends OpBinaire {
     		else if (tmp.left instanceof ConstanteQ)
     			return new Addition(tmp.right, new Addition(tmp.left, ex1).simplifier());
     	}
-    	if(ex2 instanceof VariableInconnue && ex1.value == 0) {
+    	else if(ex2 instanceof VariableInconnue && ex1.value == 0) {
     		return ex2.simplifier();
+    	} else if (ex2 instanceof Soustraction) {
+			Soustraction tmp = (Soustraction) ex2.simplifier();
+			if(tmp.right instanceof ConstanteN || tmp.right instanceof ConstanteQ)
+				return new Addition(tmp.left, new Soustraction(ex1, tmp.right)).simplifier();
+			else if (tmp.left instanceof ConstanteN || tmp.left instanceof ConstanteQ)
+				return new Soustraction(new Addition(ex1, tmp.left), tmp.right).simplifier();
     	}
     	return this;
     }
@@ -101,6 +119,12 @@ public class Addition extends OpBinaire {
 				return new Addition(tmp.right, new Addition(ex1, tmp.left).simplifier());
 			else if(tmp.left instanceof ConstanteQ)
 				return new Addition(tmp.right, new Addition(ex1, tmp.left).simplifier());
+		}else if(ex2 instanceof Soustraction) {
+			Soustraction tmp = (Soustraction) ex2.simplifier();
+			if(tmp.right instanceof ConstanteN || tmp.right instanceof ConstanteQ)
+				return new Addition(tmp.left, new Soustraction(ex1, tmp.right)).simplifier();
+			else if (tmp.left instanceof ConstanteN || tmp.left instanceof ConstanteQ)
+				return new Soustraction(new Addition(ex1, tmp.left), tmp.right).simplifier();
 		}
 		return this;
 	}

@@ -31,7 +31,7 @@ class TestAffecterVariableSymbolique {
 		ExpressionArithmetique ex1 = new Addition(x, ex);
 		
 		x.setValeur(cst2);
-		assertEquals("((2/9)+((5/9)-a))",ex1.simplifier().toString());
+		assertEquals("((7/9)-a)",ex1.simplifier().toString());
 	}
 	
 	@Test

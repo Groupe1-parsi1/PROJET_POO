@@ -157,7 +157,7 @@ class TestDerivation {
 		
 		assertEquals("(1/3)", div1.deriver().toString());
 		assertEquals("(4/3)", div2.deriver().toString());
-		//assertEquals("()", div3.deriver(2).toString());
+		assertEquals("0", div3.deriver(2).toString());
 	}
 	
 	@Test

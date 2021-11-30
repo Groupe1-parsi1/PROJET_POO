@@ -30,7 +30,41 @@ class TestAddition {
 		assertEquals("(π+5)",addON.toString());
 		assertEquals("(π+5)",addON.simplifier().toString());
 		
+		ConstanteN cst = new ConstanteN(4);
+		ConstanteQ cstq = new ConstanteQ(2, 5);
+		ConstanteN cst1 = new ConstanteN(2);
+		VariableInconnue x = new VariableInconnue("x");
+		Soustraction sous1 = new Soustraction(x, cst1);
+		Soustraction sous2 = new Soustraction(cst1, x);
+		Addition add = new Addition(cst, sous1);
+		Addition add1 = new Addition(cstq, sous1);
+		Addition add2 = new Addition(cst, sous2);
+		Addition add3 = new Addition(cstq, sous2);
+		
+		ExpressionArithmetique expres = new Addition(sous2, cst);
+		assertEquals("(6-x)", expres.simplifier().toString());
+		
+		Addition add4 = new Addition(sous1, cst1);
+		Addition add5 = new Addition(sous2, cstq);
+		Addition add6 = new Addition(cst, sous1);
+		Addition add7 = new Addition(cstq, sous2);
+		Addition add8 = new Addition(sous1, cstq);
+		
+		assertEquals("(x+2)", add.simplifier().toString());
+		assertEquals("(x+(-8/5))", add1.simplifier().toString());
+		assertEquals("(6-x)", add2.simplifier().toString());
+		assertEquals("((12/5)-x)", add3.simplifier().toString());
+		
+		assertEquals("x", add4.simplifier().toString());
+		assertEquals("((12/5)-x)", add5.simplifier().toString());
+		assertEquals("(x+2)", add6.simplifier().toString());
+		assertEquals("((12/5)-x)", add7.simplifier().toString());
+		assertEquals("(x+(-8/5))", add8.simplifier().toString());
+	
+	}
 		//TEST Q5
+		@Test
+		void testQ5() {
 		 ConstanteN cst1 = new ConstanteN(10);
 		 ConstanteQ cst2 = new ConstanteQ(1, 2);
 		 VariableInconnue cst3 = new VariableInconnue("x");
