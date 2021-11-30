@@ -15,13 +15,22 @@ class TestVariableIndex {
 		
 		VariableIndex b = new VariableIndex("α", index);
 		VariableIndex c = new VariableIndex("a", index);
+		ConstanteN n = new ConstanteN(0);
 		
+		assertNotEquals(b, n);
 		assertNotEquals(null, a);
 		assertEquals(a, b);
 		assertNotEquals(a, c);
 		
+		//assertEquals(a, a);
+		
+		assertEquals(a.hashCode(), b.hashCode());
+		
+		
 		VariableIndex var = new VariableIndex(null, index);
+		VariableIndex var1 = new VariableIndex(null, index);
 		assertNotEquals(var, a);
+		assertEquals(var, var1);
 		
 	}
 

@@ -65,9 +65,11 @@ class TestCos {
 		ExpressionArithmetique divPi61 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(-6));
 		ExpressionArithmetique cosPi61 = new Cos(divPi61);
 		assertEquals("((sqrt(3))/2)",cosPi61.simplifier().toString());
-		
-		
-		
+    	
+		}
+	
+	@Test
+	void test2() {
 		ConstanteN mipi = new ConstanteN(90);
     	ExpressionArithmetique cosMipi = new Cos(mipi);
     	assertEquals("(cos(90))",cosMipi.toString());
@@ -94,7 +96,34 @@ class TestCos {
     	ConstanteN cos601 = new ConstanteN(-60);
     	ExpressionArithmetique exCos601 = new Cos(cos601);
     	assertEquals("(1/2)",exCos601.simplifier().toString());
+	}
+	@Test
+	void test1() {
+		ConstanteN mipi = new ConstanteN(90);
+    	ExpressionArithmetique cosMipi = new Cos(mipi);
+    	assertEquals("(cos(90))",cosMipi.toString());
+		assertEquals("0",cosMipi.simplifier().toString()); 
+			
+    	ConstanteSymbolique ex = new ConstanteSymbolique(ConstantesSymboliqueConnues.EXPONENTIELLE);
+    	ExpressionArithmetique cosEx = new Cos(ex);
+    	assertEquals( "(cos(e))",cosEx.toString());
+		assertEquals( "(cos(e))",cosEx.simplifier().toString());	
+		
+		VariableInconnue x = new VariableInconnue("y");
+    	ExpressionArithmetique cosVa = new Cos(x);
+    	assertEquals("(cos(y))",cosVa.toString());
+    	assertEquals("(cos(y))",cosVa.simplifier().toString());
     	
-		} 
-	
+    	ConstanteN cos0 = new ConstanteN(0);
+    	ExpressionArithmetique exCos = new Cos(cos0);
+    	assertEquals("1",exCos.simplifier().toString());
+    	
+    	ConstanteN cos60 = new ConstanteN(60);
+    	ExpressionArithmetique exCos60 = new Cos(cos60);
+    	assertEquals("(1/2)",exCos60.simplifier().toString());
+    	
+    	ConstanteN cos601 = new ConstanteN(-60);
+    	ExpressionArithmetique exCos601 = new Cos(cos601);
+    	assertEquals("(1/2)",exCos601.simplifier().toString());
+	}
 }

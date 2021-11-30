@@ -33,8 +33,6 @@ public abstract class OpUnaire implements ExpressionArithmetique {
 		if (getClass() != obj.getClass())
 			return false;
 		OpUnaire other = (OpUnaire) obj;
-//		return (this.operationName.equals(other.operationName) && 
-//				this.value.simplifier().equals(other.value.simplifier()));
 		if (operationName == null) {
 			if (other.operationName != null)
 				return false;

@@ -2,8 +2,8 @@ package fr.pantheonsorbonne.cri;
 
 public class ConstanteQ extends ConstanteExpressionArithmetique {
 
-	long num;
-	long denum;
+	protected long num;
+	protected long denum;
 
 	public ConstanteQ(long num, long denum) {
 		this.num = num;
