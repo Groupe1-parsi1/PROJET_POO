@@ -15,6 +15,8 @@ public class Division extends OpBinaire {
 		ConstanteQ cst = new ConstanteQ(valLeft.getValue() * valRight.getDenum(), valRight.getNum());
 		if (cst.getDenum() == 1)
 			return new ConstanteN(cst.getNum());
+		if (cst.getNum() == 0)
+			return new ConstanteN(0);
 		else
 			return new ConstanteQ(valLeft.getValue() * valRight.getDenum(), valRight.getNum()).simplifier();
 

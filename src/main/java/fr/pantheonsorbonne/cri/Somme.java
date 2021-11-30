@@ -30,12 +30,10 @@ public class Somme implements ExpressionArithmetique {
 			}
 		}else if(ea instanceof VariableIndex) {
 			VariableIndex varTmp = (VariableIndex) ea;
-			if(varTmp.symbole == null) {
-				{	
-					for(long i = inf; i <= sup; i++) {
-						ConstanteN tmp = new ConstanteN(i);
-						res = new Addition(res, tmp).simplifier();
-					}
+			if(varTmp.symbole == null) {	
+				for(long i = inf; i <= sup; i++) {
+					ConstanteN tmp = new ConstanteN(i);
+					res = new Addition(res, tmp).simplifier();
 				}
 			}
 		}

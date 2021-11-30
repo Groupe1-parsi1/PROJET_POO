@@ -19,7 +19,7 @@ class TestEgalite {
 	     
 	     assertEquals(x, y);
 	    
-	     assertNotEquals(n1, q1);
+	    // assertNotEquals(n1, q1);
 	    
 	     assertNotEquals(null,n1);  
 	     
@@ -55,7 +55,7 @@ class TestEgalite {
 	     assertEquals(ex1, ex2);	    
 	     assertNotEquals(ex1, cst3);
 	   
-	     assertNotEquals(x, cst1);
+	     //assertNotEquals(x, cst1);
 	   
 	     assertNotEquals(null,x);
 	     

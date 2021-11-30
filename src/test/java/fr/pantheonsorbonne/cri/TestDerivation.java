@@ -119,6 +119,48 @@ class TestDerivation {
 	}
 	
 	@Test
+	void testDerivationOrdreNPuissance() {
+		ConstanteN cst1 = new ConstanteN(3);
+		ConstanteN cst2 = new ConstanteN(5);
+		
+		ConstanteQ cstq = new ConstanteQ(3, 7);
+		ConstanteQ cstq1 = new ConstanteQ(5, 3);
+		
+		VariableInconnue x = new VariableInconnue("x");
+		
+		ExpressionArithmetique puis1 = new Puissance(x, cst1); // x^3
+		ExpressionArithmetique puiss = new Puissance(puis1, cst2);
+		ExpressionArithmetique puis4 = new Puissance(x, new ConstanteN(2));
+		ExpressionArithmetique puis2 = new Puissance(x, cstq); // x^3/7
+		
+		ExpressionArithmetique mul = new Multiplication(cst2, x); //5x
+		ExpressionArithmetique puis3 = new Puissance(mul, cst1);
+		ExpressionArithmetique mul1 = new Multiplication(cstq1, puis3); //5/3 * (5x)^3
+		
+		assertEquals("(3*(x^2))", puis1.deriver().toString());
+		assertEquals("((3/7)*(x^(-4/7)))", puis2.deriver().toString());
+		assertEquals("(3*((5*x)^2))", puis3.deriver().toString());
+		assertEquals("(5*((5*x)^2))", mul1.deriver().toString());
+		assertEquals("(2*x)", puis4.deriver().toString());
+		assertEquals("(50*x)", mul1.deriver(2).toString());
+		assertEquals("(20*((x^3)^3))", puiss.deriver(2).toString());
+	}
+	
+	@Test
+	void testDerivationOrdreNDivision() {
+		VariableInconnue x = new VariableInconnue("x");
+		ConstanteN cst = new ConstanteN(3);
+		ConstanteQ cstq = new ConstanteQ(3, 4);
+		ExpressionArithmetique div1 = new Division(x, cst);
+		ExpressionArithmetique div2 = new Division(x, cstq);
+		ExpressionArithmetique div3 = new Division(div1, cstq);
+		
+		assertEquals("(1/3)", div1.deriver().toString());
+		assertEquals("(4/3)", div2.deriver().toString());
+		//assertEquals("()", div3.deriver(2).toString());
+	}
+	
+	@Test
 	void test15() {
 		ConstanteN deux = new ConstanteN(2);
 		ConstanteN trois = new ConstanteN(3);

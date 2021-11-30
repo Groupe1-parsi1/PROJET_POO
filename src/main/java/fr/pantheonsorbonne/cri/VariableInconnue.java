@@ -52,10 +52,7 @@ public class VariableInconnue extends ConstanteExpressionArithmetique {
 			if((this.getClass() != ea.getClass())) 
 				return false;
 			VariableInconnue x = (VariableInconnue)ea;
-			if(this.symbole == x.symbole) {
-				return true;
-			}
-			return false;
+			return this.symbole == x.symbole;
 	 }
 
 	@Override

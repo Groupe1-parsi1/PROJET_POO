@@ -52,7 +52,8 @@ private ExpressionArithmetique index;
 		else if (this.symbole == null && other.symbole == null){
 			if(this.index != null && other.index != null) {
 				return (this.index == other.index);
-			}
+			}else 
+				return false;
 		}
 		return false;
 	}
