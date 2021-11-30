@@ -59,45 +59,44 @@ class TestSin {
 	    	ExpressionArithmetique sinVa = new Sin(x);
 	    	assertEquals("(sin(y))",sinVa.toString());
 	    	assertEquals( "(sin(y))",sinVa.simplifier().toString());
-	    	
-
-	    	ExpressionArithmetique divPi4 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(4));
-			ExpressionArithmetique sinPi4 = new Sin(divPi4);
-			assertEquals("((sqrt(2))/2)",sinPi4.simplifier().toString());
-			
-			ExpressionArithmetique divPi41 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(-4));
-			ExpressionArithmetique sinPi41 = new Sin(divPi41);
-			assertEquals("((sqrt(2))/-2)",sinPi41.simplifier().toString());
-			
-			ExpressionArithmetique divPi2 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(2));
-			ExpressionArithmetique sinPi2 = new Sin(divPi2);
-			assertEquals("1",sinPi2.simplifier().toString());
-			
-			ExpressionArithmetique divPi6 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(6));
-			ExpressionArithmetique sinPi6 = new Sin(divPi6);
-			assertEquals("(1/2)",sinPi6.simplifier().toString());
-			
-			ExpressionArithmetique divPi61 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(-6));
-			ExpressionArithmetique sinPi61 = new Sin(divPi61);
-			assertEquals("(-1/2)",sinPi61.simplifier().toString());
-			
-			ExpressionArithmetique divPi3 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(3));
-			ExpressionArithmetique sinPi3 = new Sin(divPi3);
-			assertEquals("((sqrt(3))/2)",sinPi3.simplifier().toString());
-			
-			ExpressionArithmetique divPi31 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(-3));
-			ExpressionArithmetique sinPi31 = new Sin(divPi31);
-			assertEquals("((sqrt(3))/-2)",sinPi31.simplifier().toString());
-			
-			
-			
-			ExpressionArithmetique divPi21 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(-2));
-			ExpressionArithmetique sinPi21 = new Sin(divPi21);
-			assertEquals("-1",sinPi21.simplifier().toString());
-			
-
-			
+	    
+	}
+	
+	@Test
+	void test1() {
+		ExpressionArithmetique divPi4 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(4));
+		ExpressionArithmetique sinPi4 = new Sin(divPi4);
+		assertEquals("((sqrt(2))/2)",sinPi4.simplifier().toString());
 		
+		ExpressionArithmetique divPi41 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(-4));
+		ExpressionArithmetique sinPi41 = new Sin(divPi41);
+		assertEquals("((sqrt(2))/-2)",sinPi41.simplifier().toString());
+		
+		ExpressionArithmetique divPi2 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(2));
+		ExpressionArithmetique sinPi2 = new Sin(divPi2);
+		assertEquals("1",sinPi2.simplifier().toString());
+		
+		ExpressionArithmetique divPi6 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(6));
+		ExpressionArithmetique sinPi6 = new Sin(divPi6);
+		assertEquals("(1/2)",sinPi6.simplifier().toString());
+		
+		ExpressionArithmetique divPi61 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(-6));
+		ExpressionArithmetique sinPi61 = new Sin(divPi61);
+		assertEquals("(-1/2)",sinPi61.simplifier().toString());
+		
+		ExpressionArithmetique divPi3 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(3));
+		ExpressionArithmetique sinPi3 = new Sin(divPi3);
+		assertEquals("((sqrt(3))/2)",sinPi3.simplifier().toString());
+		
+		ExpressionArithmetique divPi31 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(-3));
+		ExpressionArithmetique sinPi31 = new Sin(divPi31);
+		assertEquals("((sqrt(3))/-2)",sinPi31.simplifier().toString());
+		
+		
+		
+		ExpressionArithmetique divPi21 = new Division(new ConstanteSymbolique(ConstantesSymboliqueConnues.PI),new ConstanteN(-2));
+		ExpressionArithmetique sinPi21 = new Sin(divPi21);
+		assertEquals("-1",sinPi21.simplifier().toString());
 	}
 
 }

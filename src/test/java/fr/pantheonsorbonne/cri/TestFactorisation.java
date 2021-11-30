@@ -24,7 +24,7 @@ class TestFactorisation {
 				
 				Puissance resultatAttendu = new Puissance(new Addition(a,b), new ConstanteN(2)); //(a+b)^2
 				assertEquals("((a+b)^2)", resultatAttendu.toString());
-//				assertEquals("((a+b)^2)", op4.factoriser1( (Addition) op4.left, (Puissance) op4.right).toString() );
+				assertEquals("((a+b)^2)", op4.factoriser1( (Addition) op4.left, (Puissance) op4.right).toString() );
 			}
 			
 			
@@ -47,7 +47,7 @@ class TestFactorisation {
 				Puissance resultatAttendu = new Puissance(new Soustraction(a,b),new ConstanteN(2)); //(a-b)^2
 				
 				assertEquals("((a-b)^2)", resultatAttendu.toString());
-//				assertEquals("((a-b)^2)", op4.factoriser3( (Soustraction) op4.left, (Puissance) op4.right).toString() );
+				assertEquals("((a-b)^2)", op4.factoriser3( (Soustraction) op4.left, (Puissance) op4.right).toString() );
 			}
 			
 			@Test
@@ -69,7 +69,7 @@ class TestFactorisation {
 				Puissance resultatAttendu = new Puissance(new Addition(c,d), new ConstanteN(2)); //(a+b)^2
 				
 				assertEquals("((c+d)^2)", resultatAttendu.toString());
-//				assertEquals("((c+d)^2)", op4.factoriser1( (Addition) op4.left, (Puissance) op4.right).toString() );
+				assertEquals("((c+d)^2)", op4.factoriser1( (Addition) op4.left, (Puissance) op4.right).toString() );
 			}
 			
 			@Test
@@ -94,7 +94,7 @@ class TestFactorisation {
 				Multiplication resultatAttendu = new Multiplication (trois, new Puissance(new Addition(a,b), new ConstanteN(2))); //3(a+b)^2
 				
 				assertEquals("(3*((a+b)^2))", resultatAttendu.toString());
-//				assertEquals("(3*((a+b)^2))", op2.factoriser2( (Addition) op2.left, (Multiplication) op2.right).toString() );
+				assertEquals("(3*((a+b)^2))", op2.factoriser2( (Addition) op2.left, (Multiplication) op2.right).toString() );
 			}
 			
 			@Test
@@ -119,7 +119,7 @@ class TestFactorisation {
 				Multiplication resultatAttendu = new Multiplication (trois, new Puissance(new Soustraction(a,b), new ConstanteN(2))); //3(a+b)^2
 				
 				assertEquals("(3*((a-b)^2))", resultatAttendu.toString());
-//				assertEquals("(3*((a-b)^2))", op2.factoriser4( (Soustraction) op2.left, (Multiplication) op2.right).toString() );
+				assertEquals("(3*((a-b)^2))", op2.factoriser4( (Soustraction) op2.left, (Multiplication) op2.right).toString() );
 			}
 
 }

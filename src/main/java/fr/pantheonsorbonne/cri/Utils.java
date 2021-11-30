@@ -1,6 +1,10 @@
 package fr.pantheonsorbonne.cri;
 
 public abstract class Utils {
+	
+	private Utils() {
+		
+	}
 
     public static ConstanteQ toQ(ExpressionArithmetique ea) {
         return (ConstanteQ) ea;

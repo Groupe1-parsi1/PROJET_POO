@@ -38,12 +38,14 @@ public abstract class OpBinaire implements ExpressionArithmetique {
 		}else if(this.left instanceof ExpressionArithmetique && this.right instanceof ConstanteQ) {
 			ConstanteQ cst = (ConstanteQ) this.right;
 			return simplifier(this.left, cst);
-		}else if(this.left instanceof ConstanteN && this.right instanceof ExpressionArithmetique) {
-			ConstanteN cst = (ConstanteN) this.left;
-			return simplifier(cst, this.right);
-		}else if(this.left instanceof ConstanteQ && this.right instanceof ExpressionArithmetique) {
-			ConstanteQ cst = (ConstanteQ) this.left;
-			return simplifier(cst, this.right);
+		}else if( this.right instanceof ExpressionArithmetique) {
+			if(this.left instanceof ConstanteQ) {
+				ConstanteQ cst = (ConstanteQ) this.left;
+				return simplifier(cst, this.right);
+			}else if(this.left instanceof ConstanteN) {
+				ConstanteN cst = (ConstanteN) this.left;
+				return simplifier(cst, this.right);
+			}
 		}
 		return this;
 	}

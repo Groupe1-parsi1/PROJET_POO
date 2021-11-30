@@ -64,4 +64,3 @@ public class Produit implements ExpressionArithmetique {
 		return null;
 	}
 }
-

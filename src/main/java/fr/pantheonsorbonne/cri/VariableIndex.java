@@ -46,12 +46,14 @@ private ExpressionArithmetique index;
 		if (getClass() != obj.getClass())
 			return false;
 		VariableIndex other = (VariableIndex) obj;
-		if(this.symbole != null && other.symbole != null)
+		if(this.symbole != null && other.symbole != null) {
 			return this.symbole.equals(other.symbole) && this.index.equals(other.index);
+		}
 		else if (this.symbole == null && other.symbole == null){
 			if(this.index != null && other.index != null) {
 				return (this.index == other.index);
-			}
+			}else 
+				return false;
 		}
 		return false;
 	}
