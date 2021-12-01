@@ -157,7 +157,7 @@ public class Addition extends OpBinaire {
 			Puissance carreGauche = (Puissance) gauche.left;
 			VariableInconnue varSymb1 = getVariableSymbolique(carreGauche);
 			VariableInconnue varSymb2 = getVariableSymbolique(droite);
-			ExpressionArithmetique gaucheIdentiteRemarquable = new Addition( new Puissance(varSymb1,deux),new Multiplication(deux,new Multiplication(varSymb1,varSymb2)));
+			
 			
 				return (new Puissance(new Addition(varSymb1,varSymb2),new ConstanteN(2)));
 			
@@ -166,7 +166,7 @@ public class Addition extends OpBinaire {
 	}
 	
 	protected ExpressionArithmetique factoriser2( Addition gauche, Multiplication droite) {
-		ConstanteN deux = new ConstanteN(2);
+		
 		if(gauche.left instanceof Multiplication) {
 			Multiplication multiplGauche = (Multiplication)gauche.left;
 		
@@ -179,8 +179,6 @@ public class Addition extends OpBinaire {
 	
 					if(droite.left instanceof ConstanteN) {
 						ConstanteN coef = (ConstanteN) droite.left;
-						ConstanteN coefFois2 = new ConstanteN(coef.getValue() * 2);
-						
 							return (new Multiplication(coef , new Puissance(new Addition(varSymb1,varSymb2),new ConstanteN(2))));
 					
 					}
@@ -194,7 +192,6 @@ public class Addition extends OpBinaire {
 	
 
 	protected ExpressionArithmetique factoriser3( Soustraction gauche, Puissance droite) {
-		ConstanteN deux = new ConstanteN(2);
 		if(gauche.left instanceof Puissance) {
 			Puissance carreGauche = (Puissance) gauche.left;
 			VariableInconnue varSymb1 = getVariableSymbolique(carreGauche);
@@ -208,7 +205,7 @@ public class Addition extends OpBinaire {
 
 
 	protected ExpressionArithmetique factoriser4( Soustraction gauche, Multiplication droite) {
-		ConstanteN deux = new ConstanteN(2);
+		
 		if(gauche.left instanceof Multiplication) {
 			
 			Multiplication multiplGauche = (Multiplication)gauche.left;
@@ -221,7 +218,6 @@ public class Addition extends OpBinaire {
 					
 					if(droite.left instanceof ConstanteN) {
 						ConstanteN coef = (ConstanteN) droite.left;
-						ConstanteN coefFois2 = new ConstanteN(coef.getValue() * 2);
 						return (new Multiplication(coef , new Puissance(new Soustraction(varSymb1,varSymb2),new ConstanteN(2)))).simplifier();
 					}
 				}
