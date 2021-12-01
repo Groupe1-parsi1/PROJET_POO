@@ -54,7 +54,7 @@ public class Produit implements ExpressionArithmetique {
 
 	@Override
 	public ExpressionArithmetique deriver() {
-		return null;
+		return this.deriver();
 	}
 	
 	@Override
