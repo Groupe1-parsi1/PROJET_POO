@@ -151,7 +151,6 @@ public class Addition extends OpBinaire {
 	}
 	
 	protected ExpressionArithmetique factoriser1( Addition gauche, Puissance droite) {
-		ConstanteN deux = new ConstanteN(2);
 		if(gauche.left instanceof Puissance) {
 			
 			Puissance carreGauche = (Puissance) gauche.left;
